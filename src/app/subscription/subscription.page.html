@@ -1,0 +1,80 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>subscription</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none">
+    <ion-back-button routerLink="/future-connect" slot="start">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title class="ion-text-center">Connect To People </ion-title>
+    <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+    <ion-buttons slot="end" routerLink="/tabs/dashboard">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <h1 style="font-weight: 600">Our Pricing</h1>
+    <p>Choose the right pricing for you</p>
+  </div>
+
+  <div class="sub1">
+    <!-- <div class="dis" >
+    <div [ngClass]="{box : monthly == true } " >
+      <h3 class="plan"  [ngClass]="{plan1 : monthly == true}" (click)=" monthlyplan()"  >Monthly</h3>
+    </div>
+
+    <div [ngClass]="{box: quaterly == true}" >
+      <h3 class="plan" [ngClass]="{plan1:quaterly == true }" (click) ="quaterlyplan()" >HalfYearly</h3>
+    </div>
+    <div [ngClass]="{box: yearly == true}" >
+      <h3 class="plan" [ngClass]="{plan1 : yearly == true }"  (click)="yearlyplan()" >Yearly</h3>
+    </div>
+    </div> -->
+    <div class="b1">
+      <div class="inn"  >
+        <p   [ngClass]="{plan1: monthly == true}"  (click)="monthlyplan()"  >Monthly</p>
+      </div>
+      <div class="inn2">
+        <p    [ngClass]="{plan1: quaterly == true}" (click)="quaterlyplan()" >Half Yearly</p>
+      </div>
+      <div class="inn3">
+        <p   [ngClass]="{plan1: yearly == true}" (click)="yearlyplan()" >Yearly</p>
+      </div>
+    </div>
+
+    <div class="ml">
+      <span style="font-size: 36px; font-weight: 600">${{price}}</span
+      ><span   style="font-size: 20px; font-weight: 400">/{{month}}</span>
+      <p style="color: #5f6d7e">
+        Demonstrate empathy maps and finally improve outcomes.
+      </p>
+
+      <div class="point">
+        <img src="../../assets/img/CheckboxBase.png" class="img" />
+        <p style="margin-left: 10px">24/7 support</p>
+      </div>
+      <div class="point">
+        <img src="../../assets/img/CheckboxBase.png" class="img" />
+        <p style="margin-left: 10px">Access to all features</p>
+      </div>
+      <div class="point">
+        <img src="../../assets/img/CheckboxBase.png" class="img" />
+        <p style="margin-left: 10px">Connect to 5 -10 user daily</p>
+      </div>
+      <div>
+        <ion-button expand="block" class="btn" (click)="checkout(id)"
+          >Buy now</ion-button
+        >
+      </div>
+    </div>
+  </div>
+
+  
+
+</ion-content>
+

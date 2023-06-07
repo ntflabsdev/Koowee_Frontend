@@ -1,0 +1,56 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/emergency-button" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+		<ion-title class="ion-text-center"> </ion-title>
+	<ion-buttons slot="end" routerLink="/discovery"><ion-icon name="settings-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="top-bids">
+		<h4 class="til"> Add Emergency Contact </h4>
+		<span class="ovel-tx"> Contact </span>
+	</div>
+	<div filterBtns>
+    <ion-searchbar placeholder="Search contact name or number" (keyup)="searchcontacts($event.target.value);"></ion-searchbar>
+  </div>
+	<div class="data-conts"  *ngIf="(newArrays.length == 0)">
+		<a  href="javascript:void(0);" class="impt-ss" (click)="getcontacts();"> <span class="icond"> <ion-icon name="person-add-outline"></ion-icon> </span> Import from Contacts </a>
+		<span class="text-or"> <small> Or </small> </span>
+		
+		<div class="input-fyt">
+		<form class="kt-form form-login" [formGroup]="loginForm" autocomplete="off">
+			<div class="inputs-s">
+				<ion-input formControlName="displayName" class="input-fts" placeholder="Enter Name"></ion-input>
+				<span errormsg *ngIf="isControlHasError('displayName','required')">
+				<strong>Please enter a fullname of contact person</strong>
+				</span>
+			</div>
+			<div class="inputs-s">
+				<p class="small-ts">Note: +91 (+ country code) is required to add. </p> 
+				<ion-input formControlName="phone" class="input-fts" placeholder="Enter Phone Number"></ion-input>	
+			<span errormsg *ngIf="isControlHasError('phone','required')">
+			<strong>Please enter your phone number</strong>
+			</span>
+			<span errormsg *ngIf="((loginForm.controls.phone.touched && !loginForm.controls.phone.valid)) && !isControlHasError('phone','required')">
+			<strong> Enter correct phone number.</strong>
+			</span>	
+			</div>
+			<div class="btn-s-s">
+				<a href="javascript:void(0)" (click)="submit();" class="btn-save"> Save Contact</a>
+			</div>
+		</form>	
+		</div>
+	</div>
+
+	<div class="data-cont"  *ngIf="(newArrays.length > 0)" >
+		<div class="dats-cntsr">
+			<div *ngFor="let news of newArrays" class="str-ss" (click)="addphonenumbers(news);">
+				<span class="icon-cnt"> <ion-icon name="person-add-outline"></ion-icon> </span>
+				<h4> {{news.displayName}} </h4>
+				<p> {{news.phoneNumbers.number}} </p>
+				<span class="dekt-cnt"><ion-icon name="add-outline"></ion-icon> </span>
+			</div>
+		</div>
+	</div>
+</ion-content>

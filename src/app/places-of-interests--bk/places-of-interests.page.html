@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-back-button defaultHref="/tabs/profile" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+	<ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons>
+	<ion-buttons slot="end" routerLink="/discovery"><ion-icon name="settings-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div places-sec>
+		<div topPart>
+		  <span userImg><img src="../assets/img/img1.jpg" alt=""> <a editImage href="#"><ion-icon name="camera"></ion-icon></a></span>
+		  <h4>Jennifer Lopez</h4>
+		  <p>265 Platinum Dr <br>Hoschton, Georgia(GA), 30548</p>
+		</div>
+		<div slider-sec>
+		    <h2 mn-places-head>Trips</h2>
+			<ion-slides pager="true" [options]="slideOpts">		
+                <ion-slide>				
+					<div slides-img>
+						<img src="assets/img/trip1.jpg" />
+						<!--ion-button  delete-button><ion-icon name="trash-outline"></ion-icon></ion-button-->
+						<div mn-cont>
+						   <h4>Dummy Trip</h4> <span now-trvel>Now Traveling</span>
+						</div>
+						<div places-date-sec>
+						    <ion-row>
+							    <ion-col size="4">
+								    <div place-content>
+									    <h5>2021 <br/>February</h5>
+									</div>
+								</ion-col>
+							    <ion-col size="4">
+								    <div place-content>
+									    <h5>1/3  <br/>Days</h5>
+									</div>								
+								</ion-col>
+							    <ion-col size="4">
+								    <div place-content>
+									    <h5>0  <br/>Miles</h5>
+									</div>								
+								</ion-col>
+							</ion-row>
+						</div>
+					</div>
+                </ion-slide>				
+			</ion-slides>				
+		</div>
+        <div ad-place-btn>
+        <ion-row>
+        <ion-col size="12" class="ion-text-center">
+		    <a href="javascript:void(0)" save>Add a Past, Current Or Future Trip</a>
+		</ion-col>		
+		</ion-row>		
+		</div>		
+	</div>
+</ion-content>

@@ -1,0 +1,85 @@
+<ion-header class="heder-main ion-no-border">
+	<!-- <link rel="stylesheet" href="../../assets/css.css"> -->
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/trip-details/{{main_trip.trip_id}}" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">Step Details </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content  bg-grey>
+	
+	<div class="contet-sect"  id="printable-area2" #elementId>
+		<div class="phot-slides">
+			<div class="slids-box new-box-a">
+				<ion-row>
+					<ion-col size="12">
+						<div class="slide">
+							<div class="img-bx-sly storis">
+								<ion-slides pager="true">
+								<ion-slide *ngFor="let img of images" >
+								  <div class="slide">
+									<div class="slidr-ims-st">	
+										<img src="{{img}}" class="img-str"/>
+									</div>
+								  </div>
+								</ion-slide>
+								
+							</ion-slides>
+								<!-- <a href="javascript:void(0)" class="btn-cat" (click)="downlaod()"> <ion-icon name="share-social-outline"></ion-icon> </a> -->
+								<a href="javascript:void(0)" class="btn-cat2" *ngIf="add_button_show == 1" (click)="deletstep(trip_id,main_trip.trip_id)"> <ion-icon name="trash"></ion-icon> </a>
+								<a href="javascript:void(0)" *ngIf="add_button_show == 1" routerLink="/edit-single-trip/{{trip_id}}" class="edit-cat"> Edit Step </a>
+								
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+			</div>
+			<div class="content-all-pst" *ngIf="(main_trip.length != 0)">
+				<div class="cont-date-syt">
+					<h4> {{main_trip.trip_name}} </h4>
+					<ul class="dtar-all">
+						<li> {{main_trip.starting_point}} </li>
+						<li>{{main_trip.start_date |  date: ' MMM d, yyyy'}}  </li>
+						<li> <img src="{{main_trip.weather.current.condition.icon}}" class="adm-usr">  {{main_trip.weather.current.temp_f}} °F  </li>
+					</ul>
+				</div>
+				<h4 class="ttl-main"> Description </h4>
+				<p>{{main_trip.trip_summary}}</p>
+				<h4 class="ttl-main"> Activities </h4>
+						<ul class="features-fsc">
+							<li *ngFor="let act of main_trip.acitvities" > <span>  {{act}}  </span> </li>
+						</ul>
+				<h4 class="ttl-main mt-20"> Comments ({{review_data.length}})</h4>
+				<ng-container *ngIf="(review_data.length != 0)">
+				<div class="commnts" *ngFor="let review of review_data" >
+					<!-- <img src="assets/img/img1.jpg" class="adm-usr">  -->
+				<img *ngIf="errors.indexOf(review.saloon_usr?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt=""  class="adm-usr">
+				<img *ngIf="errors.indexOf(review.saloon_usr?.profile_picture) == -1" src="{{review.saloon_usr?.profile_picture}}" alt=""  class="adm-usr">
+					<h5> {{review.saloon_usr.firstname+' '+review.saloon_usr.lastname}} <span class="time-al"> {{review.review.created_on | timeAgo }} </span> </h5>
+					<p> {{review.review.review}} </p>
+				</div>
+			</ng-container>
+			<!-- 	<div class="commnts">
+					<img src="assets/img/img2.jpg" class="adm-usr"> 
+					<h5>Christon Hanry <span class="time-al"> 1 hour ago </span> </h5>
+					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+				</div>
+				<div class="commnts">
+					<img src="assets/img/img3.jpg" class="adm-usr"> 
+					<h5>  Marry James  <span class="time-al"> 3 hours ago </span> </h5>
+					<p> At vero eos et accusamus et iusto odio dignissimos . </p>
+				</div> -->
+				<div class="add-commnt">
+					<ion-input placeholder="Add comment here..."  [(ngModel)]="review"  (keyup)="writereview($event.target.value);"></ion-input>
+					<span errormsg *ngIf="review_error">
+					<strong>Please enter your review.</strong>
+					</span>
+					<a href="javascript:void(0);" class="btn-send" (click)="sendreview();"> <ion-icon name="send-outline"></ion-icon> </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>

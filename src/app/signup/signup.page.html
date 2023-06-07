@@ -1,0 +1,280 @@
+<!--ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header-->
+<ion-content class="ion-padding">
+  <form class="kt-form form-login" [formGroup]="loginForm" autocomplete="off">
+    <div loginform>
+      <div logo class="ion-text-center">
+        <img src="assets/img/logo-white.png" />
+      </div>
+      <div form-group>
+        <label>First Name</label>
+        <ion-item lines="none">
+          <ion-input
+            type="text"
+            formControlName="firstname"
+            placeholder="Enter First Name"
+          ></ion-input>
+          <ion-label>
+            <ion-icon name="person-outline"></ion-icon>
+          </ion-label>
+        </ion-item>
+
+        <span errormsg *ngIf="isControlHasError('firstname','required')">
+          <strong>Please enter your firstname</strong>
+        </span>
+      </div>
+      <div form-group>
+        <label>Last Name</label>
+        <ion-item lines="none">
+          <ion-input
+            type="text"
+            formControlName="lastname"
+            placeholder="Enter Last Name"
+          ></ion-input>
+          <ion-label>
+            <ion-icon name="person-outline"></ion-icon>
+          </ion-label>
+        </ion-item>
+        <span errormsg *ngIf="isControlHasError('lastname','required')">
+          <strong>Please enter your lastname</strong>
+        </span>
+      </div>
+
+      <div form-group>
+        <label>Date of Birth</label>
+        <ion-item>
+          <ion-datetime
+            formControlName="dob"
+            placeholder="Date of Birth"
+            displayFormat="YYYY-MM-DD"
+            max="{{current_date| date: 'yyyy-MM-dd'}}"
+          ></ion-datetime>
+        </ion-item>
+      </div>
+
+	  <div form-group>
+		<label  style="color: #fff;">Gender</label>
+	
+			<ion-select  class="gender" formControlName="gender" placeholder="Select Gender">
+      <!-- <ion-select-option value= 'select Gender' > Select Gender  </ion-select-option> -->
+				<ion-select-option value="Male"  >Male</ion-select-option>
+				<ion-select-option value="Female">Female</ion-select-option>
+			</ion-select>
+	
+		
+		<span errormsg *ngIf="isControlHasError('gender','required')">
+		 <strong>Please select your gender</strong>
+		</span>
+	  </div>	
+
+   <!-- <div  from-group class="gender"> 
+	<ion-radio-group>
+		<label style="color: #fff;">Gender</label>
+		<ion-item  style="background-color: rgb(87,129,215);">  
+		<label>Male </label>
+		<ion-radio value="Male"> Male </ion-radio>
+		<label>Female</label>
+		<ion-radio value="Female"> Female </ion-radio>
+	</ion-item>
+	  </ion-radio-group>
+	
+   </div> -->
+	  
+  
+            
+
+          
+     
+
+      
+
+      <div form-group>
+        <label>Email</label>
+        <ion-item lines="none">
+          <ion-input
+            type="email"
+            formControlName="email"
+            placeholder="Enter Email"
+          ></ion-input>
+          <ion-label>
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </ion-label>
+        </ion-item>
+        <span errormsg *ngIf="isControlHasError('email','required')">
+          <strong>Please enter your email</strong>
+        </span>
+        <span errormsg *ngIf="isControlHasError('email','email')">
+          <strong>Please enter valid email address</strong>
+        </span>
+      </div>
+
+      <!-- <div form-group>
+	<label>Country</label>
+	<ion-item >
+		<ion-select okText ="confirm" formcontrolName ="country" placeholder ="Enter your country">
+			<ion-select-option *ngFor="let country of all_countries" value ="{{country.name}}" >{{country.name}}
+
+			</ion-select-option>
+		</ion-select>
+	</ion-item>
+	<span errormsg *ngIf ="isControlHasError('country','required')" >
+      <strong>please select your country</strong>
+	</span>
+
+</div> -->
+      <div form-group class="con">
+        <label>Country</label>
+
+        <div class="selectcountry">
+          <ngxgeo-autocomplete
+            id="search_places"
+            placeholder="select your country"
+            [userSettings]="userSettings"
+            (componentCallback)="autoCompleteCallback($event)"
+          ></ngxgeo-autocomplete>
+        </div>
+        <!-- <span errormsg *ngIf="isControlHasError('country','required')">
+					<strong>please select your country</strong>
+				</span> -->
+      </div>
+      <div form-group>
+        <label>Phone Number</label>
+
+        <ion-row>
+          <ion-col size="5">
+            <ion-item lines="none">
+              <ion-select
+                okText="Confirm"
+                formControlName="sdcode"
+                placeholder="+65"
+              >
+                <ion-select-option
+                  *ngFor="let country of all_countries"
+                  value="{{country.phoneCode}}"                          
+                  >{{country.sortname}}
+                  (+{{country.phoneCode}})</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+            <span errormsg *ngIf="isControlHasError('sdcode','required')">
+              <strong>Please select your sdcode</strong>
+            </span>
+          </ion-col>
+
+          <ion-col size="7">
+            <ion-item lines="none">
+              <ion-input
+                type="text"
+                formControlName="phone"
+                placeholder="Enter Phone No."
+              ></ion-input>
+              <ion-label>
+                <ion-icon name="call-outline"></ion-icon>
+              </ion-label>
+            </ion-item>
+            <span errormsg *ngIf="isControlHasError('phone','required')">
+              <strong>Please enter your phone number</strong>
+            </span>
+
+            <span errormsg *ngIf="isControlHasError('phone','pattern')">
+              <strong>Please enter correct phone number</strong>
+            </span>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div form-group>
+        <label
+          >Password
+          <p class="small-ts">
+            (Note: Password must be between 8 and 12 characters with at least
+            one uppercase letter, lowercase letter and one digit.)
+          </p>
+        </label>
+        <ion-item lines="none">
+          <ion-input
+            type="password"
+            formControlName="password"
+            class="password1"
+            placeholder="Enter Password"
+          ></ion-input>
+          <ion-label class="mainevents">
+            <ion-icon
+              viewpwd
+              *ngIf="eye_button1 == false"
+              (click)="passwordshow('true','password1','1');"
+              name="eye-off-outline"
+            ></ion-icon>
+            <ion-icon
+              viewpwdblue
+              *ngIf="eye_button1 == true"
+              (click)="passwordshow('false','password1','1');"
+              name="eye"
+            ></ion-icon>
+          </ion-label>
+        </ion-item>
+        <span errormsg *ngIf="isControlHasError('password','required')">
+          <strong>Please enter your password</strong>
+        </span>
+        <span errormsg *ngIf="isControlHasError('password','pattern')">
+          <strong>Please enter password in proper format</strong>
+        </span>
+      </div>
+      <div form-group>
+        <label>Confirm Password</label>
+        <ion-item lines="none">
+          <ion-input
+            type="password"
+            formControlName="confirmpassword"
+            class="password2"
+            placeholder="Enter Confirm Password"
+          ></ion-input>
+          <ion-label class="mainevents">
+            <ion-icon
+              viewpwd
+              *ngIf="eye_button2 == false"
+              (click)="passwordshow('true','password2','2');"
+              name="eye-off-outline"
+            ></ion-icon>
+            <ion-icon
+              viewpwdblue
+              *ngIf="eye_button2 == true"
+              (click)="passwordshow('false','password2','2');"
+              name="eye"
+            ></ion-icon>
+          </ion-label>
+        </ion-item>
+        <span errormsg *ngIf="isControlHasError('confirmpassword','required')">
+          <strong>Please enter confirmpassword</strong>
+        </span>
+        <span
+          errormsg
+          *ngIf="!isControlHasError('confirmpassword','required') && confirmpassworderror == true"
+        >
+          <strong>Confirm password doesn't match with password.</strong>
+        </span>
+      </div>
+      <div login-btn>
+        <ion-row>
+          <ion-col size="10" offset="1">
+            <!-- <ion-button routerLink="/tabs/home" expand="full">
+			Sign Up
+			</ion-button> -->
+            <ion-button (click)="register()" expand="full">
+              Sign Up
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div btn-signup class="ion-text-center">
+        <p>
+          Already have an account?
+          <a routerLink="/" href="javascript:void(0)">Login</a>
+        </p>
+      </div>
+    </div>
+  </form>
+</ion-content>
+

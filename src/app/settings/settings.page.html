@@ -1,0 +1,44 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button defaultHref="/tabs/profile" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">Settings </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  	<div fileName>
+  		<ul>
+  			<li>
+  				<span iconRelate><ion-icon name="bulb"></ion-icon></span>
+  				<h4>Enable Millionhere Mode<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p></h4>
+    			<ion-toggle></ion-toggle>
+    		</li>
+  			<li>
+  				<span iconRelate red><ion-icon name="bug"></ion-icon></span>
+  				<h4>Push Notifications<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p></h4>
+    			<ion-toggle checked></ion-toggle>
+    		</li>
+  			<li>
+  				<span iconRelate yellow><ion-icon name="notifications"></ion-icon></span>
+  				<h4>Notifications Sound<p>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p></h4>
+    			<ion-toggle checked></ion-toggle>
+    		</li>
+  			<li flexCenter>
+  				<span iconRelate orange><ion-icon name="briefcase"></ion-icon></span>
+  				<h4>New Deals & Rewards</h4>
+    			<ion-toggle></ion-toggle>
+    		</li>
+  			<li flexCenter>
+  				<span iconRelate><ion-icon name="color-fill"></ion-icon></span>
+  				<h4>Occationals Promos</h4>
+    			<ion-toggle></ion-toggle>
+    		</li>
+        <li flexCenter>
+           <ion-button href="javascript:void(0)" (click)="logout()" btn-global>LOGOUT</ion-button>
+        </li>
+  		</ul>
+    </div>
+</ion-content>
+

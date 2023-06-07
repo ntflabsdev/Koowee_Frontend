@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border heder-main" align-title="center">
+  <ion-toolbar lines="none">
+	<ion-back-button routerLink="/my-trips" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+	<ion-buttons slot="start">
+		<ion-menu-button> <a href="javascript:void(0)" class="menu-tgl"> <img src="assets/images/menu-wt.png"></a></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center">Search </ion-title>
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+		
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<!-- <div map>
+		<img src="../assets/img/map.jpg" alt="">
+	</div> -->
+	<div search>
+		<!--a class="back-btn" href="javascript:void(0)"><ion-icon name="chevron-back"></ion-icon></a-->
+		<!-- <ion-searchbar placeholder="Search"></ion-searchbar> -->
+		<div class="demo"><ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete></div>
+	</div>
+	<!-- <div botmBar>
+		<span><a href="javascript:void(0)"><ion-icon name="information-circle"></ion-icon></a></span>
+		<span ritBtns>
+			<a href="javascript:void(0)"><ion-icon name="filter"></ion-icon></a>
+			<a locate href="javascript:void(0)"><ion-icon name="locate"></ion-icon></a>
+		</span>
+	</div> -->
+
+
+	<div polularDestination>
+		
+		<h5>Popular Destinations</h5>
+		<ul>
+			<li *ngFor="let places of places_data;">
+				<a href="javascript:void(0)" (click)="selectplace(places);">
+					<span><img src="{{trips/'+places.images[0]}}" alt=""></span>
+					<h3>{{places.trip_name}} <small>{{places.starting_point}}</small></h3>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city2.png" alt=""></span>
+					<h3>London <small>CITY - UK</small></h3>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city3.png" alt=""></span>
+					<h3>Rome <small>CITY - Italy</small></h3>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city4.png" alt=""></span>
+					<h3>New York City <small>CITY - United State</small></h3>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city5.png" alt=""></span>
+					<h3>Prague <small>CITY - Czechia</small></h3>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city6.png" alt=""></span>
+					<h3>Berlin <small>CITY - Germany</small></h3>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" routerLink="/new-trip">
+					<span><img src="../assets/img/city1.png" alt=""></span>
+					<h3>Busapest <small>CITY - Hungary</small></h3>
+				</a>
+			</li> -->
+		</ul>
+	</div>
+</ion-content>

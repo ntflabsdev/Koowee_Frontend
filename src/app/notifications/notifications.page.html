@@ -1,0 +1,90 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">Notifications </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="main-padding">
+		<div class="servic-near">
+			<ion-list *ngIf="(notifications.length != 0)" class="liat-st" lines="none">
+				<ion-card class="detals" lines="none" *ngFor="let notify of notifications">
+					<div class="img-boxda">
+						<!-- <img src="assets/img/img1.jpg"> -->
+						<img *ngIf="errors.indexOf(notify.saloon_usr?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="" >
+						<img *ngIf="errors.indexOf(notify.saloon_usr?.profile_picture) == -1" src="{{IMAGES_URL+'/'+notify.saloon_usr?.profile_picture}}" alt="" >
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs" [innerHTML]="notify.notifications.message"></h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> {{notify.notifications.created_at | timeAgo }}   </p>
+					</div>
+				</ion-card>
+				<!-- <ion-card class="detals" lines="none">
+					<div class="img-boxda">  
+						<img src="assets/img/img2.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">At vero eos et accusamus et iusto odio dignissimos ducimus   </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card>
+				<ion-card class="detals" lines="none">
+					<div class="img-boxda">
+						<img src="assets/img/img3.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">Lorem ipsum dolor sit amet, consectetur adipiscing elit  </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card>
+				<ion-card class="detals" lines="none">
+					<div class="img-boxda">
+						<img src="assets/img/img4.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">Lorem Ipsum is simply dummy text of the printing  </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card>
+				<ion-card class="detals" lines="none">
+					<div class="img-boxda">
+						<img src="assets/img/img5.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">At vero eos et accusamus et iusto odio dignissimos ducimus   </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card>
+				<ion-card class="detals" lines="none">
+					<div class="img-boxda">
+						<img src="assets/img/img6.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">Lorem ipsum dolor sit amet, consectetur adipiscing elit  </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card>
+				<ion-card class="detals" lines="none">
+					<div class="img-boxda">
+						<img src="assets/img/img7.jpg">
+					</div>
+					<div class="cont-alls">
+						<h5 class="name-trs">Lorem Ipsum is simply dummy text of the printing  </h5>
+						<p class="emainb"><ion-icon name="time-outline"></ion-icon> 12 Jan 2020 | 10.00am </p>
+					</div>
+				</ion-card> -->
+			</ion-list>
+
+			<ion-list *ngIf="(notifications.length == 0)" class="liat-st" lines="none">
+				<ion-card class="detals" lines="none" >
+					<div class="cont-alls">
+						<h5 class="name-trs">Not any notification found!.</h5>
+					</div>
+				</ion-card>
+			</ion-list>
+		</div>
+	</div>
+</ion-content>

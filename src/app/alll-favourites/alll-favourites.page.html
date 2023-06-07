@@ -1,0 +1,30 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button defaultHref="/places-of-interests" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">All Favourite Places</ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div places-sec *ngIf="fav_places.length > 0">
+		<div class="flts-alu">	
+		</div>	
+		<div  *ngFor="let place of fav_places; let i = index;" class="box-servc selected{{i}}" >
+			<div class="img-b">
+				<img *ngIf="place.data.image.length == 0" src="assets/img/image-not-found.png">
+				<img *ngIf="place.data.image.length != 0" src="{{place.data.image}}">
+				<span class="favor-icn selectplaces{{i}} selected" (click)="removeplace(place._id,i)"> <ion-icon name="heart"></ion-icon> </span>
+			</div>
+			<div class="cot-a">
+				<h4> {{place.data.place.name}} </h4>
+				<ngx-stars   *ngIf="(place.data.place.rating != '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="place.data.place.rating" [readonly]="true"  [size]="0.5"></ngx-stars>
+				<ngx-stars   *ngIf="(place.data.place.rating == '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="0" [readonly]="true"  [size]="0.5"></ngx-stars>
+				<p> <ion-icon name="location-outline"></ion-icon> {{place.data.distance}} from you </p>
+				<span class="badg-catr" *ngFor="let type of place.data.results_l.types"> {{((type).replace('_', ' ')).replace('_', ' ')}} </span>
+				<a href="javascript:void(0)"  (click)="gotodetail('/place-interest-details/'+place.data.place.placeId,place.data,'already',place._id)" class="book-now"> Details </a>
+			</div>
+		</div>	
+	</div>
+</ion-content>

@@ -1,0 +1,176 @@
+ion-header{
+	&:after
+	{
+		display:none;
+	}
+	ion-toolbar{
+		--border-color:#fff;
+	}
+	ion-back-button{
+	    font-size: 13px;
+	}
+	ion-title{
+		font-weight: 500;
+	}
+	ion-buttons 
+	{
+		font-size: 20px;
+		margin-right: 10px;
+	}	
+}
+[tabhead]{
+	margin-top:90px;
+	max-width: 280px;
+	padding:0 10px;
+	ion-segment-button{
+		font-size: 14px;
+		text-transform: none;
+		color: #999;
+		letter-spacing: 0;
+		min-width: 1px;
+		&.segment-button-checked{
+			color: #000;
+			--indicator-color:transparent;
+		}
+	}
+}
+ion-content{
+	--background: #fcfcfc;
+}
+[fileName]{
+	padding:20px;
+	margin:0px 0 0;
+	ul{
+		list-style: none;
+		padding:0;
+		margin:0;
+		li{
+			margin:0;
+			padding:0;
+			display: flex;
+			border-bottom:1px solid #eee;
+			padding:20px 0;
+			h4{
+				margin:0;
+				font-size: 15px;
+				max-width: 60%;
+				p{
+					margin:6px 0 0;
+					font-size: 11px;
+					color: #999;
+					font-weight: 400;
+				}
+			} 
+			[iconRelate]{
+				max-width:30px;
+				min-width:30px;
+				min-height:30px;
+				max-height:30px;
+				margin-right: 10px;
+				border-radius: 100px;
+				background: #777;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				ion-icon{
+					color: #fff;
+					font-size: 15px;
+				}
+				&[red]{
+					background:#e44646;
+				}
+				&[yellow]{
+					background: #d5cd00;
+				}
+				&[orange]{
+					background: orange;
+				}
+				&[blue]{
+					background: #3880ff;
+				}
+			}
+			ion-toggle{
+				margin-left:auto;
+			}
+			&[flexCenter]{
+				align-items: center;
+			}
+		}
+	}
+	label{
+		font-size: 12px;
+		text-transform: uppercase;
+		color: #888;
+		margin:0 15px 7px;
+		display: block;
+	}
+	a{
+		background: #fff;
+		padding:16px 15px;
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: #666;
+		margin-bottom: 1px;
+		ion-toggle{
+			margin-left: auto;
+		}
+		span{
+			margin-left:auto;
+			font-size: 11px;
+			color: #666;	
+		}
+		ion-icon{
+			margin-left: auto;
+			color: var(--primary-color);
+			font-size: 22px;
+		}
+		&:nth-child(odd){
+			background: #fcfcfc;
+		}
+	}
+}
+
+ion-button[btn-global] {
+    width: 100%;
+}
+
+[right] {
+    float: right;
+    /* float: left; */
+    margin-left: 233px;
+}
+
+ngxgeo-autocomplete {
+	flex: 1;
+}
+.del{
+	background-color:#e44646 ;
+}
+.demo {
+    width: 100%;
+ #search_places {
+    width: 100%;
+    background: #fff;
+	    --background: #fff;
+	    padding-left: 10px;
+		--box-shadow: none;
+	    --font-size: 12px;
+	    padding-right: 20px;
+	    box-shadow: 0 0 10px rgba(0,0,0, .05);
+	    height: 46px;
+	    margin: 0 0 2px;
+	    border:1px solid #eee;
+	    border-radius: 10px;
+		input{
+			background:#fff;
+			// background: blue;
+			border :2px solid red
+		}
+  }
+ 
+  }
+
+.custom-input {
+	color: #000; /* Replace "red" with the desired color */
+  }

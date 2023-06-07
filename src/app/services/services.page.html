@@ -1,0 +1,230 @@
+<ion-content bg-grey>
+	<div class="top-sctin">
+		<div class="hedr-src">
+			<ion-menu-button> <a href="javascript:void(0)" class="men-ico"> <img src="assets/images/menu-wt.png"> </a> </ion-menu-button> 
+			<label class="ttl-al"> Services </label>
+			<a href="javascript:void(0)" class="cart-ico" routerLink="/tabs-vendor/notifications"> <ion-icon name="notifications-outline"></ion-icon>   </a>
+		</div>
+		<ion-segment [(ngModel)]="profiletab" class="segmt-desig">
+			<ion-segment-button value="Basic">
+			   Enkelt service
+			</ion-segment-button>
+			<ion-segment-button value="Pet">
+			   Pakkeservice
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	<div class="flds-login">
+		<div [ngSwitch]="profiletab">
+			<ion-list *ngSwitchCase="'Basic'">
+				<h4 class="ttl-nam clints-all"> Liste over enkelte tjenester <a href="javascript:void(0)" class="see-all tbs" routerLink="/add-single-service"> Tilføj ny </a> </h4>
+				<div *ngFor="let service of services;" class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						{{service.discount}}%
+						<small> af </small>
+					</span>
+					<span class="srv-t">
+						Servicenavn
+						<h5> {{service.service_name}} </h5>
+					</span>
+					<span class="srv-t">
+						Tidsvarighed 
+						<h5> {{service.duration}} </h5>
+					</span>
+					<span class="srv-t">
+						Pris
+						<h5> ${{service.price}} </h5>
+					</span>
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-single-service/{{service._id}}"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)"  (click)="deletesingleser(service._id);"  class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<!-- <div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						12%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Service Name
+						<h5> Part Makeup </h5>
+					</span>
+					<span class="srv-t">
+						Time Duration 
+						<h5> 1 hour </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $15.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-single-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						50%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Service Name
+						<h5> Haircut </h5>
+					</span>
+					<span class="srv-t">
+						Time Duration 
+						<h5> 10 mins </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $5.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-single-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						25%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Service Name
+						<h5> Blow-dry </h5>
+					</span>
+					<span class="srv-t">
+						Time Duration 
+						<h5> 20 mins </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $12.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-single-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						30%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Service Name
+						<h5> Nail Art </h5>
+					</span>
+					<span class="srv-t">
+						Time Duration 
+						<h5> 45 mins </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $15.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-single-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div> -->
+				
+			</ion-list>
+		  
+			<ion-list *ngSwitchCase="'Pet'">
+				<h4 class="ttl-nam clints-all"> Liste over pakkeservices <a href="javascript:void(0)" class="see-all tbs" routerLink="/add-package-service"> Tilføj ny </a> </h4>
+				<div *ngFor="let package of packages;" class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						{{package.discount}}% 
+						<small> af </small>
+					</span>
+					<span class="srv-t">
+						Pakkenavn
+						<h5> {{package.package_name}} </h5>
+					</span>
+					<span class="srv-t">
+						Tidsplanstype
+						<h5> {{package.schedule_type}} </h5>
+					</span>
+					<span class="srv-t">
+						Pris
+						<h5> ${{package.price}} </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-package-service/{{package._id}}"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" (click)="deletepackage(package._id);" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				 </div>
+				<!--<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						15%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Package Name
+						<h5>  Straightening </h5>
+					</span>
+					<span class="srv-t">
+						Schedule Type
+						<h5> Sequence </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $43.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-package-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						20%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Package Name
+						<h5> Facial Massage </h5>
+					</span>
+					<span class="srv-t">
+						Schedule Type
+						<h5> Parallel </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $25.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-package-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						45%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Package Name
+						<h5> Body Massage </h5>
+					</span>
+					<span class="srv-t">
+						Schedule Type
+						<h5> Sequence </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $20.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-package-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div>
+				<div class="srv-box">
+					<span class="icon-srv icon-disct"> 
+						30%
+						<small> Off </small>
+					</span>
+					<span class="srv-t">
+						Package Name
+						<h5> Threading </h5>
+					</span>
+					<span class="srv-t">
+						Schedule Type
+						<h5> Parallel </h5>
+					</span>
+					<span class="srv-t">
+						Price
+						<h5> $10.00 </h5>
+					</span>	
+					<a href="javascript:void(0)" class="edt-rd" routerLink="/add-package-service"> <ion-icon name="pencil-outline"></ion-icon> </a>
+					<a href="javascript:void(0)" class="dlt-rd"> <ion-icon name="trash-outline"></ion-icon> </a>
+				</div> -->
+			</ion-list>
+			
+		</div>
+	</div>
+</ion-content>

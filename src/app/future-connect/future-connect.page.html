@@ -1,0 +1,103 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+     <ion-back-button routerLink="/tabs/dashboard" slot="start">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+     </ion-back-button>
+     <ion-title class="ion-text-center">Connect To People </ion-title>
+     <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+     <ion-buttons slot="end" routerLink="/tabs/dashboard">
+        <ion-icon name="home-outline"></ion-icon>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>                     
+<ion-content>
+  <ion-slides (ionSlideReachEnd)="lastslide();" *ngIf="users.length > 0">
+     <ion-slide *ngFor="let user of finalArr; let i=index;" class="usertab{{i}}">
+        <ng-container >
+           <!-- <img src="assets/img/trip4.jpg"/> -->
+           <div imgGradient>
+            <img fixFull *ngIf="errors.indexOf(user.userinfo?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="">
+            <img fixFull  *ngIf="errors.indexOf(user.userinfo?.profile_picture) == -1" src="{{user.userinfo?.profile_picture}}" alt="">
+           </div>
+           <div contentSlider>
+            <h2>{{user.userinfo.firstname+' '+user.userinfo.lastname}},  
+                <ng-container *ngIf="errors.indexOf(user?.age) == -1"> {{user.age}} </ng-container>
+                <ng-container *ngIf="errors.indexOf(user.userinfo?.dob) == -1 && errors.indexOf(user?.age) >= 0"> {{getage(user.userinfo?.dob)}} </ng-container>
+                 </h2>
+            <p *ngIf="errors.indexOf(user.userinfo?.locations?.location) == -1">
+                <ion-icon name="pin" ></ion-icon>
+                {{user.userinfo?.locations?.location}}
+            </p>
+            <p *ngIf="errors.indexOf(user.trip?.starting_point) == -1">
+                <ion-icon name="pin"></ion-icon>
+                {{user.trip.starting_point}}
+            </p>
+
+
+
+            <div class="buttonss" >
+              <ion-button rejectColor (click)="removetab('usertab'+i,i);"  >
+                 <ion-icon name="close-circle" ></ion-icon>
+              </ion-button>
+              <ion-button sucCess (click)="seletuser(user.userinfo._id,user);">
+                 <ion-icon name="checkmark-circle" ></ion-icon>
+              </ion-button>
+            </div>
+
+           </div>
+           
+        </ng-container>
+     </ion-slide>
+     <!--  <ion-slide>
+        <ng-container>
+         <img src="assets/img/trip2.jpg"/>
+        <h2>Roma, 25</h2>
+        <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+        <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+        <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+        <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+        </ng-container> 
+        </ion-slide>
+        
+        <ion-slide>
+         <ng-container> 
+         <img src="assets/img/trip3.jpg"/>
+        <h2>Roma, 25</h2>
+        <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+        <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+        <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+        <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+         </ng-container>
+        </ion-slide>
+        
+        <ion-slide>
+         <ng-container>   
+         <img src="assets/img/trip4.jpg"/>
+         <h2>Roma, 25</h2>
+         <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+         <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+          <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+          <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+         </ng-container>
+        </ion-slide> -->
+  </ion-slides>
+
+  <ion-slides *ngIf="users.length == 0">
+     <ion-slide  class="usertab">
+        <ng-container>
+             <h2>No user found!!</h2>
+           <!-- <img src="assets/img/trip4.jpg"/> -->
+          
+           
+        </ng-container>
+      </ion-slide>
+     
+   </ion-slides>
+
+</ion-content>

@@ -1,0 +1,153 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button defaultHref="/tabs/profile" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">Filters </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div fileName>
+  		<div class="filter-sf">
+			<h4 class="ttld"> Site Types </h4>
+			<ul>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="moon-outline"></ion-icon></span>
+					<h4>Campgrounds </h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate red><ion-icon name="car-outline"></ion-icon></span>
+					<h4>Caravan Parks</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate yellow><ion-icon name="home-outline"></ion-icon></span>
+					<h4>Backpacker Hostels</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate orange><ion-icon name="partly-sunny-outline"></ion-icon></span>
+					<h4>Day Use Areas</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="flag-outline"></ion-icon></span>
+					<h4>Points of Interest</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate red><ion-icon name="information-outline"></ion-icon></span>
+					<h4>Information Centers</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate yellow><ion-icon name="people-outline"></ion-icon></span>
+					<h4>Public Dump Points</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate orange><ion-icon name="water-outline"></ion-icon></span>
+					<h4>Water Facilities</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+			</ul>
+		</div>
+		<div class="filter-sf">
+			<h4 class="ttld"> Site Features </h4>
+			<ul>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="happy-outline"></ion-icon></span>
+					<h4>Free </h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate red><ion-icon name="logo-usd"></ion-icon></span>
+					<h4>Cost</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate yellow><ion-icon name="wallet-outline"></ion-icon></span>
+					<h4>Donation</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate orange><ion-icon name="paw-outline"></ion-icon></span>
+					<h4>Dogs Allowed</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="woman-outline"></ion-icon></span>
+					<h4>Toilets</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate red><ion-icon name="water-outline"></ion-icon></span>
+					<h4>Drinking Water</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate yellow><ion-icon name="beer-outline"></ion-icon></span>
+					<h4>Pub Hotel</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate orange><ion-icon name="bag-handle-outline"></ion-icon></span>
+					<h4>Dump Spot</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+			</ul>
+		</div>
+		<div class="filter-sf">
+			<h4 class="ttld"> Name Filter </h4>
+			<div class="cont-cont">
+				<ion-label> Show only sites containing </ion-label>
+				<ion-input placeholder="eg. Beach"></ion-input>
+			</div>
+		</div>
+		<div class="filter-sf">
+			<h4 class="ttld"> Direction & Distance </h4>
+			<div class="cont-cont rang-dv">
+				<h5> This filter will show you sites only within the radius in kms and directions chosen below. </h5>
+				<ion-range min="0" max="500" pin color="primary" value="200"> </ion-range>
+				<img src="assets/img/pie.png" class="img-oud">
+			</div> 
+		</div>
+		<div class="filter-sf">
+			<h4 class="ttld"> States </h4>
+			<ul>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="globe-outline"></ion-icon></span>
+					<h4>California  </h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate red><ion-icon name="globe-outline"></ion-icon></span>
+					<h4>Alaska</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate yellow><ion-icon name="globe-outline"></ion-icon></span>
+					<h4>New York</h4>
+					<ion-toggle checked></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate orange><ion-icon name="globe-outline"></ion-icon></span>
+					<h4>Texas</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+				<li flexCenter>
+					<span iconRelate><ion-icon name="globe-outline"></ion-icon></span>
+					<h4>Florida</h4>
+					<ion-toggle></ion-toggle>
+				</li>
+			</ul>
+		</div>
+		<div class="btns-fltrs">
+			<a href="javascript:void(0);" class="btr-sst"> Reset All </a>
+			<a href="javascript:void(0);" class="app-sst">Apply </a>
+		</div>
+    </div>
+</ion-content>
+

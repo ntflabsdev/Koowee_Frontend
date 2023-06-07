@@ -1,0 +1,76 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+    <ion-back-button routerLink="/add-step-map2" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+  <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+  <ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="onPageScroll($event)">
+  <div class="top-search">
+    <div class="src-trs">
+      <span class="icon-drt" (click)="gotomap();"> <ion-icon name="globe-outline"></ion-icon> </span>
+
+      <!-- <ion-item class="demo" > 
+        <ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"> </ngxgeo-autocomplete>
+      </ion-item> -->
+      <ion-input placeholder="Search here..."   [(ngModel)]="search_by" ></ion-input>
+      <!-- <span class="icon-sc-f"> <ion-icon name="funnel-outline"></ion-icon> </span> -->
+      <span class="icon-sc-f" (click)="search()"> <ion-icon name="search"></ion-icon> </span>
+    </div>
+  </div>
+  <div places-sec  *ngIf="trips.length == 0" >
+    <div class="flts-alu">
+      <span>No result found, Try another location.</span>
+    </div>
+  </div>
+
+  <div places-sec  *ngIf="trips.length > 0" >
+    <div class="flts-alu">  
+      <h2 mn-places-head>
+        All profiles Trip
+      </h2>
+     <!--  <ion-select interface="popover" placeholder="Sort By">
+        <ion-select-option value="nes">Closest to you</ion-select-option>
+        <ion-select-option value="n64">Alphabetically</ion-select-option>
+        <ion-select-option value="ps">By star Rating</ion-select-option>
+      </ion-select> -->
+    </div>  
+    <ng-container id="list">
+    <div slider-sec>
+      <div slides-img *ngFor="let trip of trips" routerLink="/trip-details/{{trip.datas._id}}">
+        <img src="{{trip.datas.images[0]}}" />
+        <!--ion-button  delete-button><ion-icon name="trash-outline"></ion-icon></ion-button-->
+        <div mn-cont>
+           <h4 class="title-trip">{{trip.datas.trip_name}}</h4> <span now-trvel>{{trip.distance}}</span>
+        </div>
+        <div places-date-sec>
+          <ion-row>
+            <ion-col size="4">
+              <div place-content>
+                <h5>{{trip.datas.start_date |  date: 'dd/MM/yyyy'}} <span>Date </span></h5>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <div place-content>
+                <h5>{{trip.datas.starting_point}}  <span>Starting Point </span></h5>
+              </div>                
+            </ion-col>
+            <ion-col size="4">
+              <div place-content>
+               <!--  <h5>04  <span>Comments </span></h5> -->
+              </div>                
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>     
+    </div>  
+   </ng-container>
+    <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+  </div>
+</ion-content>

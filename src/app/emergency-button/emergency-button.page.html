@@ -1,0 +1,46 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button defaultHref="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+		<ion-title class="ion-text-center">Emergency </ion-title>
+	<ion-buttons slot="end" routerLink="/discovery"><ion-icon name="settings-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="top-bids">
+		<a href="javascript:void(0);" class="rsf-s"> 
+			<img src="assets/img/alert.png">
+		</a>
+	</div>
+	<div class="data-conts">
+		<h4 class="lst-sst"> Emergency Contacts 
+			<a routerLink="/add-contact" href="javascript:void(0);" class="add-str"> Add New </a>
+		</h4>
+		<div class="dats-cntsr"  *ngIf="(emergancy_contacts.length != 0)">
+			<div class="str-ss" *ngFor="let contacts of emergancy_contacts">
+				<span class="icon-cnt"> <ion-icon name="person-outline"></ion-icon> </span>
+			<h4> {{contacts.displayName}} </h4>
+				<p> {{contacts.contact_array}} </p>
+				<span class="dekt-cnt" (click)="deletecontacts(contacts._id);"><ion-icon name="close-outline"></ion-icon> </span>
+			</div>
+			<!-- <div class="str-ss">
+				<span class="icon-cnt"> <ion-icon name="person-outline"></ion-icon> </span>
+				<h4> Hanry James </h4>
+				<p> +91 8888 777 424 </p>
+				<span class="dekt-cnt"><ion-icon name="close-outline"></ion-icon> </span>
+			</div>
+			<div class="str-ss">
+				<span class="icon-cnt"> <ion-icon name="person-outline"></ion-icon> </span>
+				<h4> Marry James </h4>
+				<p> +91 9999 777 322 </p>
+				<span class="dekt-cnt"><ion-icon name="close-outline"></ion-icon> </span>
+			</div>
+			<div class="str-ss">
+				<span class="icon-cnt"> <ion-icon name="person-outline"></ion-icon> </span>
+				<h4> Dennial James </h4>
+				<p> +91 7676 777 322 </p>
+				<span class="dekt-cnt"><ion-icon name="close-outline"></ion-icon> </span>
+			</div> -->
+		</div>
+	</div>
+</ion-content>

@@ -1,0 +1,68 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+	<div profilePic>
+		<img *ngIf="errors.indexOf(profile_data.data?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="">
+		<img *ngIf="errors.indexOf(profile_data.data?.profile_picture) == -1" src="{{profile_data.data?.profile_picture}}" alt="">
+		 <a class="back-btn" (click)="backButton()" href="javascript:void(0)" *ngIf="user_id != undefined && user_id != null && user_id != ''"><ion-icon name="chevron-back"></ion-icon></a>
+		 <span class="badge-nst" *ngIf="profile_data?.usersstypes != undefined"> {{profile_data.usersstypes?.title}}  </span>
+	</div>
+	<div contentArea>
+		<div flexTop>
+			<div lftside>
+				<h4 *ngIf="profile_data?.data != undefined">{{profile_data.data?.firstname+' '+profile_data.data?.lastname}},  <small>{{profile_data.data?.gender}}</small>  </h4>
+				<p *ngIf ="profile_data?.data != undefined" > {{profile_data.data?.country}}</p>
+				<p *ngIf="profile_data?.data?.address != undefined">{{profile_data.data?.address}}, {{profile_data.data?.country}}</p>
+				<h6>Interests</h6>
+				<ul *ngIf="profile_data?.interestss != undefined && profile_data?.interestss.length > 0" class="tag-line">
+					<li *ngFor="let interest of profile_data?.interestss"><a href="javascript:void(0)" class="interest" ><ion-icon name="musical-note-outline"></ion-icon > {{interest.title}} </a></li>
+					<!-- <li><a href="javascript:void(0)"><ion-icon name="book-outline"></ion-icon> Reading</a></li>
+					<li><a href="javascript:void(0)"><ion-icon name="videocam-outline"></ion-icon> Movie</a></li> -->
+				</ul>
+			</div>
+			<div ritside *ngIf="user_id == undefined || user_id == null || user_id == ''">
+				<a routerLink="/edit-profile" href="javascript:void(0)"><ion-icon name="create-outline"></ion-icon></a>
+				<a routerLink="/discovery" href="javascript:void(0)"><ion-icon name="settings-outline"></ion-icon></a>
+			</div>
+		</div>
+
+		<div aboutMe>
+			<h5>About Me</h5>
+			<p *ngIf="profile_data?.data != undefined">{{profile_data?.data.about_me}}</p>
+		</div>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col *ngFor="let img of images" size="4" (click)="presentAlert(img)">
+					<img *ngIf="img.file_type == 'image'" src="{{img.images}}" alt="" />
+				<!-- 	<video *ngIf="img.file_type == 'video'" controls="controls" preload="metadata" autoplay="false" webkit-playsinline="webkit-playsinline"> -->
+					<video *ngIf="img.file_type == 'video'" preload="metadata">
+					<source src="{{img.images}}#t=0.1" type="{{img.file_type+'/'+img.type}}" />
+					</video><span *ngIf="img.file_type == 'video'"><ion-icon name="play"></ion-icon></span>
+				</ion-col>
+			<!-- 	<ion-col size="4"></ion-col>
+				<ion-col size="4"><img src="../assets/img/img3.jpg" alt="" /></ion-col>
+				<ion-col size="4"><img src="../assets/img/img4.jpg" alt="" /></ion-col>
+				<ion-col size="4"><img src="../assets/img/img5.jpg" alt="" /></ion-col>
+				<ion-col size="4"><img src="../assets/img/img6.jpg" alt="" /><span><ion-icon name="play"></ion-icon></span></ion-col>
+				<ion-col size="4"><img src="../assets/img/img7.jpg" alt="" /></ion-col> -->
+				<ion-col *ngIf="((images.length > 0) && (images.length < totaldata) && (images.length != totaldata))" size="12">
+				  <!--   <div photo-upload2>	 -->				    
+						<ion-button (click)="loadmore();" expand="full">Load More</ion-button>
+				<!-- 	</div> -->
+				</ion-col>
+				<ion-col size="12" *ngIf="user_id == undefined || user_id == null || user_id == ''">
+				    <div photo-upload>
+					<ion-icon name="image-outline"></ion-icon>
+					    <p>Add Photo</p>
+						<ion-input type="file" (change)="handleImageUpload($event)"></ion-input>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+</ion-content>

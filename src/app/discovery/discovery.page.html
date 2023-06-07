@@ -1,0 +1,118 @@
+<!-- <ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/tabs/profile" slot="start" (click)="alerts();"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">Discovery </ion-title>
+
+	<ion-buttons slot="end" routerLink="/tabs/home"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header class="heder-main ion-no-border">
+	<ion-toolbar lines="none">
+		<ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon
+				name="arrow-back-outline"></ion-icon></ion-back-button>
+		<ion-title class="ion-text-center">Set My Search</ion-title>
+		<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+		<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div fileName>
+		<ul>
+			<li>
+				<!-- <span iconRelate blue><ion-icon name="globe-outline"></ion-icon></span> -->
+				<h4>Set To Private<p>When switched off, you wil not receive any new matches, You can still view and read - chat to
+						your existing friends/matches.</p>
+				</h4>
+				<ion-toggle [(ngModel)]="discovery" (ionChange)="changediscovery($event)"></ion-toggle>
+			</li>
+			<li>
+				<!-- <span iconRelate red><ion-icon name="pin"></ion-icon></span> -->
+				<h4>Female</h4>
+				<ion-toggle  [(ngModel)]="Female" [disabled]="dis"
+					(ionChange)="genderchange($event)" value="Female"></ion-toggle>
+			</li>
+			<li>
+				<!-- <span iconRelate blue><ion-icon name="pin"></ion-icon></span> -->
+				<h4>Male</h4>
+				<ion-toggle  [(ngModel)]="Male" [disabled]="dis"
+					(ionChange)="genderchange($event)" value="Male"></ion-toggle>
+			</li>
+			<li>
+				<!-- <span iconRelate yellow><ion-icon name="pin"></ion-icon></span> -->
+				<h4>Both</h4>
+				<ion-toggle  [(ngModel)]="Both"  [disabled]="dis"
+					(ionChange)="genderchange($event)" value="Both"></ion-toggle>
+			</li>
+
+			<li>
+				<!-- <span iconRelate red><ion-icon name="pin"></ion-icon></span> -->
+				<h4>Country/Nationality</h4>
+				<ion-toggle  [(ngModel)]="country" [disabled]="dis"
+					(ionChange)="checkcountry($event)"></ion-toggle>
+			</li>
+
+            <li *ngIf="show" >
+				<div class="demo"> 
+				<ngxgeo-autocomplete   placeholder="select your country"
+				class="custom-input"
+					[userSettings]="userSettings"
+					(componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete> </div>
+			</li>
+			<!-- <li>
+				<span iconRelate blue><ion-icon name="pin"></ion-icon></span>
+				<h4>Town</h4>
+				<ion-toggle [(ngmodel)]="Town" (ionchange)="chagediscovery($event)" [disabled]="disablevl"
+					(ionChange)="checktown($event)"></ion-toggle>
+			</li> -->
+
+
+			<li>
+				<!-- span iconRelate yellow><ion-icon name="notifications"></ion-icon></span> -->
+				<h4>Age</h4>
+				<p>{{lower}}-{{greater}}</p>
+
+				<ion-range id="dual-range" min="10" max="100" [disabled]="dis" [(ngModel)]="age"
+					(ionChange)="changeFunctionweight($event)" dual-knobs>
+				</ion-range>
+			</li>
+			<li>
+				<!-- <span iconRelate red><ion-icon name="pin"></ion-icon></span> -->
+				<h4>Distance <small>(Km's)</small></h4>
+				<ion-range min="10" max="200" pin="true" [disabled]="dis" (ionChange)="changedistance($event)"
+					[(ngModel)]="distance">
+				</ion-range>
+			</li>
+
+
+			<!-- <li flexCenter>
+  				<h4>Show</h4>
+    			<span right red>Both<ion-icon name="chevron-forward"></ion-icon></span>
+				<ion-select (ionChange)="genderchange($event)" right [(ngModel)]="gender" okText="Okay" [disabled]="disablevl" cancelText="Dismiss">
+					<ion-select-option value="both">Both</ion-select-option>
+					<ion-select-option value="female">Female</ion-select-option>
+					<ion-select-option value="male">Male</ion-select-option>
+				</ion-select>
+    		</li> -->
+			<h6>Matched Trip Profiles Only</h6>
+			<li flexCenter>
+				<!-- <span iconRelate red><ion-icon name="bug"></ion-icon></span> -->
+				
+				<h4>
+					<p>Show users that are not in my area, but will be travelling to the same destination as me around
+						the same time.</p>
+				</h4>
+				<ion-toggle [(ngModel)]="not_my_area" [disabled]="disablevl"
+					(ionChange)="arecheck($event)"></ion-toggle>
+			</li>
+			<li flexCenter>
+				<ion-button href="javascript:void(0)" (click)="presentAlert3()" btn-global>LOGOUT</ion-button>
+			</li>
+			<li   >
+				<ion-button href="javascript:void(0)" color="danger" (click)="DeleteAccount()" btn-global >Delete Account</ion-button>
+			</li>
+		</ul>
+	</div>
+</ion-content>
+

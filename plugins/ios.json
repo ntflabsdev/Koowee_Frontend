@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-disable-ios11-statusbar": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "com.koowee.app"
+    },
+    "cordova-plugin-file-opener2": {
+      "PACKAGE_NAME": "com.kooweee.app"
+    }
+  },
+  "dependent_plugins": {}
+}

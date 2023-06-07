@@ -1,0 +1,261 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html,
+body {
+  font-family: "Poppins", sans-serif !important;
+  --ion-default-font: "Poppins", sans-serif !important;
+  height: 100vh;
+  background-color: #fff;
+}
+[places-sec] [slider-sec] .swiper-pagination.swiper-pagination-bullets {
+  width: 10px;
+  right: 7px;
+  left: inherit;
+  top: 40%;
+}
+
+ion-title.center {
+  text-align: center;
+}
+ion-header.heder-main {
+  background: var(--ion-color-gradient1);
+  --background: var(--ion-color-gradient1);
+  border-color: transparent;
+  --border: none;
+  color: #fff;
+  --height: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.ios {
+  ion-header.heder-main {
+    background: var(--ion-color-gradient1);
+    --background: var(--ion-color-gradient1);
+    border-color: transparent;
+    --border: none;
+    color: #fff;
+    --height: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 10px;
+  }
+}
+ion-header.heder-main ion-toolbar {
+  background: transparent;
+  --background: transparent;
+  --background-image: transparent;
+  --border-color: transparent;
+  color: #fff;
+  opacity: 1;
+  font-family: "Poppins", sans-serif !important;
+}
+ion-header.heder-main a.menu-tgl {
+  width: 22px;
+  display: flex;
+  align-items: center;
+}
+ion-header.heder-main a.menu-tgl img {
+  width: 22px;
+  height: auto;
+}
+ion-header.heder-main ion-title {
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 0px;
+}
+ion-header.heder-main ion-buttons[slot="end"] ion-icon {
+  font-size: 22px;
+  color: #fff;
+}
+ion-header.heder-main ion-back-button[slot="start"] {
+  font-size: 16px;
+  color: #fff;
+  --padding-start: 0px;
+}
+
+ion-segment.segmt-details {
+  background: transparent;
+  --background: transparent;
+  border-radius: 0px;
+}
+ion-segment.segmt-details ion-segment-button {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 14px;
+  color: #a7a7a7;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: none;
+  margin: 0px;
+  height: 42px;
+  min-height: 42px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  border-radius: 0px;
+}
+ion-segment.segmt-details ion-segment-button:before {
+  display: none;
+}
+ion-segment.segmt-details
+  ion-segment-button.segment-button-checked.ion-activatable {
+  background: #f8f8f8 !important;
+  --background: #f9f9f9 !important;
+  /* border: none !important; */
+  border-radius: 0px !important;
+  --border-radius: 0px;
+  --border-color: transparent !important;
+  box-shadow: none;
+  color: #fff;
+  --indicator-color: transparent !important;
+  color: #4267b2;
+  border-bottom-color: #4267b2 !important;
+  scroll-padding: 0px;
+  font-size: 14px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --indicator-box-shadow: initial !important;
+}
+.slids-box.new-box-a .swiper-pagination.swiper-pagination-bullets {
+  bottom: 140px;
+  right: -15px;
+  left: initial;
+  width: auto;
+  transform: rotate(90deg);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px 10px 6px 10px;
+  border-radius: 50px;
+}
+.slids-box.new-box-a .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  opacity: 0.5;
+}
+.slids-box.new-box-a
+  span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+.slids-box.new-box-a.dttr .swiper-pagination.swiper-pagination-bullets {
+  bottom: 109px;
+  padding: 0px 7px 3px 10px;
+  right: -13px;
+}
+ion-alert.alert-helps {
+  --max-width: 480px;
+  --max-height: 100%;
+
+  .alert-wrapper {
+    background: transparent;
+    box-shadow: none;
+    .alert-message {
+      padding: 0;
+      margin: 0 20px;
+    }
+    .alert-button-group {
+      position: absolute;
+      top: -8px;
+      right: -15px;
+      button.alert-button {
+        background: #ffffff61;
+        padding-top: 8px;
+        padding-bottom: 7px;
+        .alert-button-inner {
+          color: #fff;
+          font-size: 22px;
+        }
+      }
+    }
+
+    .sc-ion-alert-md {
+      max-height: 328px;
+      font-size: 16px;
+    }
+  }
+}
+
+span[errormsg] {
+  font-size: 10px;
+}
+
+// input.::placeholder
+
+// input#search_places::placeholder {
+//     // background-image: linear-gradient( rgb(41,83,166));
+//     /* For other browsers */
+//     color: white;
+//     // color: grey;
+//     background-color:rgb(97,138,221);
+//         opacity: .5;
+//     height: 50px;
+//     text-align: center;
+//   }
+
+#search_places input#search_places::placeholder {
+  /* For other browsers */
+  color: #fff !important;
+}
+#search_places input#search_places::placeholder:active {
+  border: transparent;
+}
+#search_places input#search_places:focus-visible {
+  outline: none;
+}
+
+#search_places .search-default-icon {
+  filter: invert(100);
+}
+#search_places .search-icon {
+  width: 35px;
+  border-left: none;
+}
+
+ .md .hydrated #background-content {
+  background-color: red !important ;
+}
+
+ .demo {
+  input#search_places {
+    background-color: #fff !important;
+  }
+}
+
+.selectcountry{
+  .custom-autocomplete__input.button-included {
+    background-color: transparent;
+  }
+}
+.message_row{
+
+  input.native-input.sc-ion-input-md {
+    background-color: #fff;
+    --placeholder-color : black
+    
+  }
+}

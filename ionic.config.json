@@ -1,0 +1,10 @@
+{
+  "name": "koowee",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular"
+}

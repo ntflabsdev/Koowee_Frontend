@@ -1,0 +1,48 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none">
+    <ion-back-button routerLink="/tabs/dashboard" slot="start">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title class="ion-text-center">Connection </ion-title>
+    <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+    <ion-buttons slot="end" routerLink="/tabs/dashboard">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content" >
+  <ion-grid>
+    <ion-row>
+      <!-- Loop through the user array -->
+      <ng-container *ngFor="let user of profile_data" class="container">
+        <ion-col size="6" >
+          <div class="user-card"  (click)="viewProfile(user._id,user)"  >
+            <!-- Replace "user.image" with the path to the user's profile image -->
+            <img *ngIf="errors.indexOf(user?.profile_picture) >= 0" class="img" src="../assets/img/img1.jpg" alt="">
+            <img *ngIf="errors.indexOf(user?.profile_picture) == -1" class="img" src="{{user.profile_picture}}" alt="">
+
+            <!-- <img src="{{ user.profile_picture}}"  > -->
+
+            <div class="user-info">
+              <!-- Display the username and country name -->
+              <div class="username">{{ user.firstname }}</div>
+              <div class="country">{{ user.country }}</div>
+            </div>
+          </div>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+
+
+    <ion-slides *ngIf="profile_data.length == 0">
+      <ion-slide class="usertab">
+        <ng-container>
+          <h2>No Connection found!!</h2>
+          <!-- <img src="assets/img/trip4.jpg"/> -->
+        </ng-container>
+      </ion-slide>
+
+    </ion-slides>
+  </ion-grid>
+</ion-content>

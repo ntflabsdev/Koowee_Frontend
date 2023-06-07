@@ -1,0 +1,14 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+    <ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+  <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+  <ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ <ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete>
+<ion-content> 
+  <div class="map-wrapper" style="height: 100%;">      
+    <div #map id="map"  style="height: 100%;"></div>
+  </div>   
+</ion-content>

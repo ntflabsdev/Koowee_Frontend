@@ -1,0 +1,96 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+	<ion-buttons slot="end" routerLink="/places-interests"><ion-icon name="add-outline"></ion-icon></ion-buttons>
+	<ion-buttons routerLink="/discovery" slot="end"><ion-icon name="settings-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div places-sec>
+		<div topPart>
+		  <span userImg><img *ngIf="errors.indexOf(profile_data.data?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="">
+		  <img *ngIf="errors.indexOf(profile_data.data?.profile_picture) == -1" src="{{profile_data.data?.profile_picture}}" alt=""></span>
+		  <h4 *ngIf="errors.indexOf(profile_data.data?.firstname) == -1">{{profile_data.data?.firstname+' '+profile_data.data?.lastname}}</h4>
+		  <p>{{profile_data.data?.email}}</p>
+		</div>
+		<div slider-sec>
+		    <h2 mn-places-head>My Trips</h2>
+			<div slides-img *ngFor="let trip of trips" routerLink="/trip-details/{{trip._id}}">
+				<img src="{{trip.images[0]}}" />
+				<!--ion-button  delete-button><ion-icon name="trash-outline"></ion-icon></ion-button-->
+				<div mn-cont>
+				   <h4>{{trip.trip_name}}</h4> <!-- <span now-trvel>Now Traveling</span> -->
+				</div>
+				<div places-date-sec>
+					<ion-row>
+						<ion-col size="4">
+							<div place-content>
+								<h5>{{trip.start_date |  date: 'dd/MM/yyyy'}} <span>Date </span></h5>
+							</div>
+						</ion-col>
+						<ion-col size="4">
+							<div place-content>
+								<h5>{{trip.starting_point}}  <span>Starting Point </span></h5>
+							</div>								
+						</ion-col>
+						<ion-col size="4">
+							<div place-content>
+								<!-- <h5>04  <span>Comments </span></h5> -->
+								
+								<div ad-place-btn   *ngIf="trip.status == 0" >
+									<ion-row>
+										<ion-col size="12" class="ion-text-center" (click)="submits(trip._id);">
+										  <a href="javascript:void(0)"  save>Draft</a>
+										</ion-col>	
+									</ion-row>
+								</div>	
+							</div>								
+						</ion-col>
+					</ion-row>
+				</div>
+			</div>	
+			<!-- <div slides-img>
+				<img src="assets/img/trip2.jpg" />
+				
+				<div mn-cont>
+				   <h4>Greek Island </h4> <span now-trvel>Now Traveling</span>
+				</div>
+				<div places-date-sec>
+					<ion-row>
+						<ion-col size="4">
+							<div place-content>
+								<h5>05/03/2021 <span>Date </span></h5>
+							</div>
+						</ion-col>
+						<ion-col size="4">
+							<div place-content>
+								<h5>Alaska  <span>Starting Point </span></h5>
+							</div>								
+						</ion-col>
+						<ion-col size="4">
+							<div place-content>
+								<h5>35  <span>Comments </span></h5>
+							</div>								
+						</ion-col>
+					</ion-row>
+				</div>
+			</div>	 -->		
+		</div>
+
+		<div registertext  *ngIf="count < total_result">
+		<ion-button color="primary" class="btn-register" shape="round" fill="outline" (click)="loadmore();">
+		Load More
+		</ion-button>
+		</div>
+
+        <div ad-place-btn>
+        <ion-row>
+        <ion-col size="12" class="ion-text-center">
+		    <a href="javascript:void(0)" routerLink="/places-interests" save>Add A Trip</a>
+		</ion-col>		
+		</ion-row>		
+		</div>		
+	</div>
+</ion-content>

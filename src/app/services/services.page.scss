@@ -1,0 +1,599 @@
+ion-content[bg-grey] {
+	background: #f9f9f9;
+	--background: #f9f9f9;
+	
+	.top-sctin {
+		position: relative;
+		padding: 15px;
+		background: linear-gradient(to right, #6fcdff, #70b0ff);
+		padding-bottom: 70px;
+		margin-bottom: -45px;
+		background-size: cover;
+		background-position: center bottom;
+		z-index:0;
+		width: 100%;
+		.hedr-src {
+			padding: 0px 0 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.men-ico {
+				display: flex;
+				align-items: center;
+				img {
+					width: 22px;
+				}
+			}
+			.cart-ico {
+				float: right;
+				color: #fff;
+				font-size: 26px;
+				position: relative;
+				top: -2px;
+			}
+			label.ttl-al {
+				color: #fff;
+				font-size: 18px;
+				position: relative;
+				top: -3px;
+				font-weight: 400;
+			}
+		}
+		.cont-he {
+			text-align: center;
+			color: #fff;
+			padding: 0 10px;
+			h4.ttl-man {
+				margin-bottom: 0px;
+				font-size: 30px;
+			}
+			p {
+				margin-top: 6px;
+				font-size: 17px;
+				color: rgba(255, 255, 255, 0.7686274509803922);
+				line-height: 22px;
+			}
+		}
+		&:after {
+			content:"";
+			position:absolute;
+			background:url("../../assets/images/serv2.jpg");
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-size: cover;
+			z-index: -1;
+			opacity: 0.07;
+		}
+	}
+	
+	.top-section-logo {
+		padding:35px 0 25px;
+		text-align: center;
+		img.logo-brnd {
+			width: 90px;
+		}
+		h4 {
+			font-size: 26px;
+			color: #70b1ff;
+			font-family: 'Poppins', sans-serif !important;
+			font-weight: 700;
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		p {
+			font-size: 16px;
+			color: #afb8ca;
+			margin: 0px;
+			font-weight: 500;
+			letter-spacing: 0.5px;
+		}
+	}
+	.flds-login {
+		background: #f9f9f9;
+		z-index: 111;
+		position: relative;
+		padding: 15px 15px 20px  !important;
+		box-shadow:0px -10px 14px rgba(0, 0, 0, 0.08);
+		border-radius: 25px 25px 0 0;
+		
+		.logn--frms {
+			position: relative;
+			padding: 0;
+			border: 1px solid rgba(131, 131, 131, 0.2);
+			border-radius: 50px;
+			padding-left: 30px;
+			margin-bottom:25px;
+			ion-item {
+				height: 53px;
+				--highlight-color-focused: 53px;
+				position: relative;
+				top: -10px;
+				background: transparent;
+				--background: transparent;
+				--padding-start: 0px;
+				ion-label   {
+					margin: 0px;
+					display: inline-block;
+					background: #fff;
+					color: #b5b4b4;
+					font-weight: 500;
+					letter-spacing: 0.5px;
+					width: fit-content;
+					position: relative;
+					z-index: 0;
+					overflow: visible;
+					&:after {
+						content: "";
+						position: absolute;
+						background: #ffffff;
+						left: -6px;
+						right: -3px;
+						top: 0;
+						bottom: 0;
+						z-index: -1;
+					}
+				}
+				ion-input {
+					height: 36px;
+					--height: 36px;
+					min-height: 36px;
+					max-height: 36px;
+					position: relative;
+					color: #43444f;
+					font-family: 'Ubuntu', sans-serif !important;
+					font-weight: 400;
+					font-size: 18px;
+				}
+			}
+			ion-item.md {
+				position: relative;
+				top: 0px;
+			}
+			ion-item.md.item-has-value, ion-item.md.item-has-focus {
+				position: relative;
+				top: -18px;
+				ion-label {
+					margin-bottom: 8px;
+				}
+			}
+			span.icon-fld {
+				color: #70b1ff;
+				position: absolute;
+				left: 15px;
+				top: 15px;
+				font-size: 25px;
+			}
+		}
+		.logn--frms.text-are {
+			border-radius: 30px;
+		}
+		.logn--frms.text-are {
+			ion-item {
+				    height: auto;
+				ion-textarea {
+					font-family: 'Ubuntu', sans-serif !important;
+					font-weight: 400;
+					font-size: 18px;
+					    margin: 0px;
+				}
+			}
+		}
+	}
+	.forgt-txt {
+		display: block;
+		width: 100%;
+		text-align: right;
+		padding-right: 5px;
+		margin-top: -7px;
+		margin-bottom: 30px;
+		span {
+			color: #70b1ff;
+			font-weight: 600;
+			font-size: 14px;
+			letter-spacing: 0.5px;
+		}
+	}
+	ion-button.btn-login {
+		background: linear-gradient(to right, #6fcdff, #70b0ff);
+		--background-color: transparent;
+		--background: linear-gradient(to right, #6fcdff, #70b0ff);
+		border: none;
+		--border: none;
+		box-shadow: 0 10px 25px rgba(112, 177, 255, 0.15);
+		border-radius: 50px;
+		--border-radius: 50px;
+		overflow: hidden;
+		font-size: 16px;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 1px;
+		height: 50px;
+		margin: 0px;
+		margin-bottom: 20px;
+	}
+	p.dont-hv {
+		text-align: center;
+		margin: 0px;
+		font-size: 14px;
+		color: #a8a8a8;
+		letter-spacing: 0.5px;
+		a {
+			text-decoration: none;
+			font-weight: 600;
+		}
+	}
+	ion-row.mrs {
+		margin: 0 -5px;
+		ion-button.btn-fb {
+			background: #335ba0;
+			--background: #335ba0;
+			border: none;
+			--border: none;
+			border-radius: 5px;
+			--border-radius: 5px;
+			overflow: hidden;
+			font-size: 15px;
+			text-transform: capitalize;
+			font-weight: 600;
+			letter-spacing: 1px;
+			height: 50px;
+			margin: 0px;
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}
+		ion-button.btn-googl {
+			background: #e33019;
+			--background: #e33019;
+			border: none;
+			--border: none;
+			border-radius: 5px;
+			--border-radius: 5px;
+			overflow: hidden;
+			font-size: 15px;
+			text-transform: capitalize;
+			font-weight: 600;
+			letter-spacing: 1px;
+			height: 48px;
+			margin: 0px;
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}
+	}
+	.uplod-icn {
+		width: 90px;
+		height: 90px;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		position: relative;
+		 img.user-img{
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			border: 4px solid rgba(112, 176, 255, 0.3);
+			box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+			object-fit: cover;
+		}
+		label.chang-pic {
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			background: linear-gradient(to right, #6fcdff, #70b0ff);
+			border-radius: 50%;
+			color: #fff;
+			text-align: center;
+			line-height: 35px;
+			font-size: 22px;
+			bottom: 0;
+			right: 0;
+		}
+	}
+	p.small-ts {
+		margin-top: -15px;
+		font-size: 10px;
+		color: #bdbec6;
+		margin-bottom: 20px;
+		line-height: 14px;
+	}
+	ion-segment.segmt-desig {
+		margin-bottom: 10px;
+		margin-top: 20px;
+		border-radius: 50px;
+		background: rgba(255, 255, 255, 0.75);
+		padding: 2px;
+		ion-segment-button  {
+			font-family: 'Ubuntu', sans-serif !important;
+			padding: 5px;
+			border-radius: 50px !important;
+			--border-radius: 50px !important;
+			height: 38px;
+			min-height: 38px;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 500;
+			color: rgb(112, 180, 255);
+			padding: 0px;
+			--border-radius: 50px !important;
+			overflow: hidden;
+		}
+		ion-segment-button.segment-button-checked.ion-activatable  {
+			background: linear-gradient(to right, #6fcdff, #70b0ff) !important;
+			--background: linear-gradient(to right, #6fcdff, #70b0ff) !important;
+			--indicator-color:linear-gradient(to right, #6fcdff, #70b0ff) !important;
+			box-shadow: none;
+			color: #fff;
+			--indicator-color: transparent!important;
+		}
+	}
+	.box-servc {
+		position: relative;
+		background: #fff;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+		margin-bottom: 18px;
+		padding-left: 105px;
+		min-height: 120px;
+		display: flex;
+		align-items: center;
+		.img-b {
+			    position: absolute;
+				left: 0;
+				width: 110px;
+				height: 100%;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.15);
+				z-index: 0;
+			}
+			span.badg-catr {
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				font-size: 10px;
+				background: linear-gradient(to top left, #6fcdff, #70b0ff);
+				padding: 5px 12px 5px 12px;
+				color: #fff;
+				text-transform: capitalize;
+				text-decoration: none;
+				border-radius: 50px;
+				font-weight: 500;
+				z-index: 11;
+				letter-spacing: 0.5px;
+			}
+		}
+		.cot-a {
+			text-align: left;
+			position: relative;
+			padding: 14px;
+			height: 100%;
+			width: 100%;
+			h4  {
+				margin: 0px;
+				font-size: 16px;
+				font-weight: 600;
+				color: #3a3a3a;
+				margin-bottom: 7px;
+			}
+			ul.rating-all {
+				padding: 0px;
+				margin: 0px;
+				list-style: none;
+				display: block;
+				margin-top: 3px;
+				margin-bottom: 8px;
+				li {
+					display: inline-block;
+					font-size: 13px;
+					margin-right: 2px;
+					color: #c3c3c3;
+				}
+				li.active {
+					color: #f8c50a;
+				}
+				li.totl-rv {
+					color: #000000;
+					font-weight: 600;
+					position: relative;
+					margin-right: 0px;
+					margin-left: 3px;
+					top: -1px;
+					font-size: 12px;
+				}
+			}
+			p {
+				margin: 0px;
+				font-size: 14px;
+				margin-top: 5px;
+				ion-icon {
+					vertical-align: bottom;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+	.book-now {
+		position: absolute;
+		right: 0;
+		bottom: 10px;
+		font-size: 13px;
+		background: linear-gradient(to top left, #6fcdff, #70b0ff);
+		padding: 6px 10px 7px 17px;
+		color: #fff;
+		text-transform: capitalize;
+		text-decoration: none;
+		border-radius: 50px 0 0 50px;
+		font-weight: 600;
+		box-shadow: 0 3px 15px rgba(112, 177, 255, 0.15);
+	}
+	span.badg-catr {
+		display: inline-block;
+		font-size: 9px;
+		background: rgba(112, 178, 255, 0.17);
+		padding: 4px 12px 4px;
+		color: #70b2ff;
+		border-radius: 50px;
+		margin-top: 12px;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		border: 1px solid rgba(112, 178, 255, 0.15);
+	}
+	.flds-login {
+		ion-list {
+			background:transparent;
+			--background:transparent;
+		}
+	}
+	span.success-or {
+		position: absolute;
+		left: 0;
+		writing-mode: vertical-rl;
+		text-orientation: inherit;
+		height: 100%;
+		text-align: center;
+		color: #fff;
+		background: rgba(76, 175, 80, 0.75);
+		z-index: 111;
+		transform: rotate(180deg);
+		padding: 3px;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 600;
+		letter-spacing: 1px;
+		font-size: 12px;
+	}
+	span.cncl-or {
+		position: absolute;
+		left: 0;
+		writing-mode: vertical-rl;
+		-webkit-text-orientation: inherit;
+		text-orientation: inherit;
+		height: 100%;
+		text-align: center;
+		color: #fff;
+		background: rgba(244, 67, 54, 0.7);
+		z-index: 111;
+		transform: rotate(180deg);
+		padding: 3px;
+		font-family: "Poppins", sans-serif;
+		font-weight: 600;
+		letter-spacing: 1px;
+		font-size: 12px;
+	}
+}
+.clints-all {
+    margin-top: 10px;
+    margin-bottom: 25px;
+	.see-all.tbs {
+		float: right;
+		font-size: 11px;
+		text-decoration: none;
+		font-family: "Poppins", sans-serif;
+		font-weight: 500;
+		letter-spacing: 1px;
+		margin-top: 4px;
+		background: linear-gradient(to top left, #6fcdff, #70b0ff);
+		color: #fff;
+		padding: 5px 12px;
+		border-radius: 50px;
+		margin-top: -2px;
+	}
+}
+
+.srv-box {  
+	position: relative;
+    padding: 10px;
+    margin-bottom: 22px;
+    border: 1px solid #f9f9f9;
+    border-radius: 7px;
+    background: #fff;
+    padding-left: 70px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    align-items: center;
+    box-shadow:0px 6px 16px rgba(0, 0, 0, 0.03);
+	span.icon-srv {
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: linear-gradient(to right, #6fcdff, #70b0ff);
+		left: 10px;
+		border-radius: 5px;
+		text-align: center;
+		line-height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		top: 10px;
+		img {
+			width: 28px;
+		}
+	}
+	span.icon-srv.icon-disct {
+		flex-direction: column;
+		line-height: normal !important;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 600;
+		small {
+			display: block;
+			font-size: 10px;
+			margin-top: 2px;
+			color: rgba(255, 255, 255, 0.75);
+		}
+	}
+	span.srv-t {
+		font-size: 9px;
+		font-weight: 500;
+		letter-spacing: 0.5px;
+		color: #c3c3c3;
+		h5 {
+			margin: 0px;
+			margin-top: 6px;
+			font-size: 15px;
+			color: #222;
+			font-weight: 500;
+		}
+	}
+	.edt-rd {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: -9px;
+		right: 32px;
+		background: linear-gradient(to top left, #FFC107, #FF5722);
+		color: #fff;
+		font-size: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+	}
+	.dlt-rd {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: -9px;
+		right: 7px;
+		background: linear-gradient(to top left, #F44336, #E91E63);
+		color: #fff;
+		font-size: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+	}
+}

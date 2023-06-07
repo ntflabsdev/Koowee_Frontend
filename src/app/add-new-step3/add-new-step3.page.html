@@ -1,0 +1,121 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">New Step </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content bg-grey>
+	<div class="contet-sect">
+		<div class="phot-slides">
+			<div class="slids-box new-box-a" >
+				<ion-row>
+					<ion-col size="12">
+						<div class="slide">
+							<div class="img-bx-sly storis">
+								<!-- <img src="assets/img/track2.jpg"> -->
+								  <div #map id="map"></div>
+
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+			</div>
+			<div class="content-all-pst">
+				  <form class="kt-form form-login" [formGroup]="loginForm" autocomplete="off">
+				<div>
+					<ul class="data-flos">
+					  <li><label>Step Name</label><ion-input  formControlName="step_name"  placeholder="Add Step Name"></ion-input>
+						<span errormsg *ngIf="isControlHasError('step_name','required')">
+						<strong>Step name is required</strong>
+						</span>
+					  </li>
+					 
+					  <li>
+					  	<ion-row>
+					  		<ion-col class="6">
+					  			 <label>Arrival Date</label><ion-datetime min="{{min_date}}" formControlName="arrival_date"  placeholder="Select Date" (ionChange)="selectdated($event);"></ion-datetime>
+								<span errormsg *ngIf="isControlHasError('arrival_date','required')">
+								<strong>Arrival date is required</strong>
+								</span>	
+					  		</ion-col>
+
+					  		<ion-col class="6">
+					  			<label>Arrival Time</label><ion-datetime [disabled]="(loginForm.controls.arrival_date.value != '') ? false : true" formControlName="arrival_time"  displayFormat="HH:mm"  placeholder="Select Time"  hourValues="{{min_time2}}"></ion-datetime>
+								<span errormsg *ngIf="isControlHasError('arrival_time','required')">
+								<strong>Arrival time is required</strong>
+								</span>
+					  		</ion-col>
+					  	</ion-row>
+					 
+					  </li>
+					
+
+					    <li >
+					   <div class="demo" search><ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete>
+					   </div>
+						<span errormsg class="blockDiv" *ngIf="this_location.length == 0 && submit_done == 'true'">
+						<strong>Destination point is required.</strong>
+						</span>
+					  </li>
+					  <li class="uplod-pi">
+					<!-- 	<label for="uplod-lsve" class="btn-prts">
+							<span class="icon-s"> <ion-icon name="camera-outline"></ion-icon> </span>
+							<h4> Add Photos and Videos </h4>
+							<input type="file" id="uplod-lsve" style="display:none;">
+						</label> -->
+
+
+
+						<ngx-dropzone (change)="onSelect($event)" [accept]="'image/*'" >
+
+						<ngx-dropzone-label> <ion-icon name="camera-outline"></ion-icon> Add Photos</ngx-dropzone-label>
+						<ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+						<!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+						</ngx-dropzone-image-preview>
+
+						</ngx-dropzone>
+						<span errormsg *ngIf="img_err == true">
+						<strong>Please upload images</strong>
+						</span>
+					  </li>
+					  <li><label>What have you been up to?</label><ion-textarea formControlName="what_to_do"  placeholder="Add message here.." rows="4"></ion-textarea>
+							<span errormsg *ngIf="isControlHasError('what_to_do','required')">
+							<strong>This field is required</strong>
+							</span>
+					  </li>  
+					  <li><label>Add Your Top Spot & Activities</label>
+					  	<!-- <ion-input   placeholder="Add Top Spot & Activities"></ion-input> -->
+
+					<tag-input  [modelAsStrings]="true" #input  formControlName="acitvities" theme='bootstrap'>
+					<ng-template let-item="item" let-index="index"> <!-- DEFINE HERE YOUR TEMPLATE -->
+					<span>
+					{{ item }}
+					</span>
+					<delete-icon (click)="input.removeItem(item, index)"></delete-icon>
+					</ng-template>
+					</tag-input>
+					  
+
+
+							<span errormsg *ngIf="isControlHasError('acitvities','required')">
+							<strong>PLease add your top spot & activities</strong>
+							</span>
+					  </li>
+					  
+					</ul>
+					<div class="bottom-btns">
+						<a href="javascript:void(0)" class="slects" (click)="addnewstep();"> Add New Step </a>
+					</div>
+					<div class="bottom-btns">
+						<a href="javascript:void(0)" class="cancl" (click)="submit('0');"> Save Draft </a>
+						<a href="javascript:void(0)" class="slects" (click)="submit('1');"> Publish </a>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</ion-content>

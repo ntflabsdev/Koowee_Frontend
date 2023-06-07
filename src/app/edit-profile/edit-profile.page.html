@@ -1,0 +1,202 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button (click)="backButton()" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+
+    
+    <ion-title class="ion-text-center">Edit Profile </ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<!--ion-buttons slot="end"><ion-icon name="home-outline"></ion-icon></ion-buttons-->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div profilePage>
+    <div topPart>
+      <!-- <a href="javascript:void(0)" routerLink="/chat" msg><ion-icon name="chatbox"></ion-icon></a> -->
+      <span userImg>
+       
+        <img *ngIf="errors.indexOf(post?.profile_picture) >= 0 && is_license_uploaded == false"   alt=""  src="../assets/img/img1.jpg" >
+    <img *ngIf="errors.indexOf(post?.profile_picture) == -1 && is_license_uploaded == false"  alt=""   src="{{post?.profile_picture}}"/> 
+    <img *ngIf="is_license_uploaded == true"   alt="" [src]="sanitizer.bypassSecurityTrustUrl(license_image_url)"
+    >
+
+         <!-- <a editImage href="javascript:void(0);"  ><ion-icon name="camera"></ion-icon><input type="file" id="chang-pic" (change)="uploadLicense($event,'profile')" style="visibility:hidden;"></a></span> -->
+         <a editImage href="javascript:void(0);"  ><ion-icon name="camera"></ion-icon><input type="file" id="chang-pic" (change)="handleImageUpload($event)" style="visibility:hidden;"></a>
+        <!-- <a editImage  *ngIf="errors.indexOf(post?.profile_picture) == -1 && is_license_uploaded == false"   > <ion-icon name="trash"></ion-icon></a> -->
+        </span>
+
+      <h4>{{fullname}}</h4>
+      <p>{{fulladdress}}</p>
+      <!-- <a href="javascript:void(0)" btn-edit>Edit Profile</a> -->
+      <!-- <ul>
+        <li><h6>510</h6><p>Posts</p></li>
+        <li><h6>2.4k</h6><p>Followers</p></li>
+        <li><h6>120</h6><p>Following</p></li>
+      </ul> -->
+      <ion-segment mode="md" [(ngModel)]="profile" segment>
+        <ion-segment-button value="posts">
+           <h6>Personal Details</h6>
+        </ion-segment-button>
+          <ion-segment-button value="followers">
+           <h6>Change Password</h6>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div botmPart [ngSwitch]="profile">
+      <div *ngSwitchCase="'posts'"> 
+        <form class="kt-form form-login" [formGroup]="loginForm" autocomplete="off">
+        <ul>
+          <li><label>First Name</label><ion-input formControlName="firstname" value="Jennifer Lopez"></ion-input>
+            <span errormsg *ngIf="isControlHasError('firstname','required')">
+            <strong>First name is required</strong>
+            </span>
+          </li>
+          <li><label>Last Name</label><ion-input formControlName="lastname"  value="Lopez"></ion-input>
+            <span errormsg *ngIf="isControlHasError('lastname','required')">
+            <strong>lastname is required</strong>
+            </span>
+          </li>
+          <li><label>Email Address</label><ion-input formControlName="email" value="jenilop02@gmail.com"></ion-input>
+            <span errormsg *ngIf="isControlHasError('email','required')">
+            <strong>Email address is required</strong>
+            </span>
+            <span errormsg *ngIf="isControlHasError('email','email')">
+            <strong>Please enter a valid email address</strong>
+            </span>
+          </li>
+          <li><label>Phone</label>
+            <ion-row>
+              <ion-col size="5">
+                  <ion-select okText="Confirm"  formControlName="sdcode"  placeholder="+65">
+                  <ion-select-option *ngFor="let country of countries" value="{{country.phoneCode}}">{{country.sortname}} (+{{country.phoneCode}})</ion-select-option>
+                  </ion-select>
+                   <span errormsg *ngIf="isControlHasError('sdcode','required')">
+                    <strong>Please select your sdcode</strong>
+                    </span>
+              </ion-col>
+
+              <ion-col size="7">
+                   <ion-input type="number" formControlName="phone"  value="998 8888 0120"></ion-input>
+                  <span errormsg *ngIf="isControlHasError('phone','required')">
+                  <strong>Please enter your phone number</strong>
+                  </span>
+
+                <span errormsg *ngIf="isControlHasError('phone','pattern')">
+                <strong>Please enter correct phone number</strong>
+                </span>
+               
+              </ion-col>
+            </ion-row>
+          
+
+           
+           
+          </li>
+          <li><label>Date Of Birth</label>
+            <ion-datetime formControlName="dob"  displayFormat="D MMM YYYY"  max="{{current_date| date: 'yyyy-MM-dd'}}"></ion-datetime>
+            <span errormsg *ngIf="isControlHasError('dob','required')">
+            <strong>Date of Birth is required</strong>
+            </span>
+          </li>
+
+          <li><label>Gender</label>
+            <ion-select formControlName="gender" palceholder="Select Gender">
+              <ion-select-option value="Male">Male</ion-select-option>
+              <ion-select-option value="Female">Female</ion-select-option>
+            </ion-select>
+            <span errormsg *ngIf="isControlHasError('gender','required')">
+             <strong>Please select your gender</strong>
+            </span>  
+          </li>	
+
+      <li >
+        <label>Country / Nationality </label>
+      <div class="demo" search><ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete>
+      </div>
+      <span errormsg *ngIf="address_error == true">
+      <strong>This field is required.</strong>
+      </span>
+      </li>
+
+        <!--   <li><label>City/Town</label><ion-input formControlName="address" value="265 Platinum Dr Hoschton, Georgia(GA), 30548"></ion-input></li> -->
+        <!--   <li><label>Country</label>
+            <ion-select formControlName="country" value="f">
+              <ion-select-option  *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</ion-select-option>
+            </ion-select>
+            <span errormsg *ngIf="isControlHasError('country','required')">
+             <strong>Please select your country</strong>
+            </span>
+          </li> -->
+          <li>
+			<label>Interests</label>
+            <ion-select formControlName="interests" multiple="true"  cancelText="Nah" okText="Okay!">
+              <ion-select-option  *ngFor="let interest of interests" value="{{interest._id}}">{{interest.title}}</ion-select-option>
+            </ion-select>
+            <span errormsg *ngIf="isControlHasError('interests','required')">
+             <strong>Please select your interests</strong>
+            </span>
+          </li>
+		  <li>
+			<label>User Type </label>
+            <ion-select formControlName="usertype" placeholder="Select User Type" cancelText="Cancel" okText="Save">
+              <ion-select-option  *ngFor="let usertype of usertypes" value="{{usertype._id}}">{{usertype.title}}</ion-select-option>
+            </ion-select>
+            <span errormsg *ngIf="isControlHasError('usertype','required')">
+             <strong>Please select your user type</strong>
+            </span>
+          </li>
+
+
+        <li><label>About Me</label><ion-input formControlName="about_me" value=""></ion-input>
+        <span errormsg *ngIf="isControlHasError('about_me','required')">
+        <strong>This field is required</strong>
+        </span>
+        </li>
+        </ul>
+        <a href="javascript:void(0)" (click)="update();" save>Save Changes</a>
+      </form>
+      </div>
+
+
+      <!-- followers -->
+      <div *ngSwitchCase="'followers'">
+        <label><p class="small-ts"> Note: Password must be between 8 and 12 characters with at least one uppercase letter, lowercase letter and one digit.</p> </label>
+
+         <form class="kt-form form-login" [formGroup]="loginForm2" autocomplete="off">
+        <ul>
+          <li><label>Old Password</label><ion-input  type="password" formControlName="oldpassword"></ion-input>
+            <span errormsg *ngIf="isControlHasError2('oldpassword','required')">
+            <strong>Enter your current password</strong>
+            </span>
+          </li>
+          <li><label>New Password</label>
+            <ion-input  type="password" formControlName="newpassword"></ion-input>
+            <span errormsg *ngIf="isControlHasError2('newpassword','required')">
+            <strong>Please enter your new password</strong>
+            </span>
+            <span errormsg *ngIf="isControlHasError2('newpassword','pattern')">
+            <strong>Please enter password in proper format</strong>
+            </span>
+            <!-- <span errormsg *ngIf="loginForm2.controls.newpassword.touched && !loginForm2.controls.newpassword.valid && !isControlHasError2('newpassword','required')">
+            <strong>New password must be between 8 and 12 characters with at least one uppercase letter, lowercase letter, one special character and one digit.</strong>
+            </span> -->
+          </li>
+          <li><label>Confirm New Password</label>
+            <ion-input  type="password" formControlName="confirmpassword"></ion-input>
+            <span errormsg *ngIf="isControlHasError2('confirmpassword','required')">
+            <strong>Please enter confirm password</strong>
+            </span>
+            <span errormsg *ngIf="loginForm2.controls.newpassword.value != loginForm2.controls.confirmpassword.value && !isControlHasError2('confirmpassword','required')">
+            <strong>Confirm the password does not match the new password.</strong>
+            </span>
+          </li>
+        </ul>
+        <a href="javascript:void(0)" (click)="changepassword()" save>Submit</a>
+      </form>
+      </div>
+
+
+    </div>
+  </div>
+</ion-content>
+

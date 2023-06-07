@@ -1,0 +1,88 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+     <ion-back-button routerLink="/connections" slot="start">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+     </ion-back-button>
+     <ion-title class="ion-text-center">Connections Profile </ion-title>
+     <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+     <ion-buttons slot="end" routerLink="/tabs/dashboard">
+        <ion-icon name="home-outline"></ion-icon>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-slides >
+     <ion-slide *ngFor="let user of users; let i=index;" class="usertab{{i}}">
+        <ng-container>
+           <h4 class="headings">You found a traveler!</h4>
+           <h5 class="headings" *ngIf="errors.indexOf(user.trip?.starting_point) == -1">{{user.userinfo.firstname}} have some travel plans</h5>
+           <h5 class="headings" *ngIf="errors.indexOf(user.trip?.starting_point)> 0">{{usersData.firstname}} don't have any travel plans</h5>
+           <!-- <img src="assets/img/trip4.jpg"/> -->
+     
+           <div class="imgFlirt">
+            <img *ngIf="errors.indexOf(usersData?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="" class="firtscl" routerLink="/tabs/dashboard">
+            
+              <img *ngIf="errors.indexOf(usersData?.profile_picture) == -1" src="{{usersData.profile_picture}}" alt="" class="firtscl" routerLink="/tabs/dashboard">
+           
+              <img *ngIf="errors.indexOf(userinfo?.profile_picture) >= 0" src="../assets/img/img1.jpg" alt="" class="secondscl">
+           
+              <img *ngIf="errors.indexOf(userinfo?.profile_picture) == -1" src="{{userinfo.profile_picture}}" alt="" class="secondscl">
+          </div>
+           <div class="buttonss">
+            <ion-button  (click)="gotourl('/profile/'+usersData._id)" >
+              <ion-icon name="person-outline"></ion-icon>
+              View Profile
+           </ion-button>
+
+              <ion-button (click)="joinChat(usersData._id);">
+                 <ion-icon name="chatbubble-outline"></ion-icon>
+                 Send a message
+              </ion-button>
+
+              <ion-button routerLink="/future-connect">
+                 <ion-icon name="search-outline"></ion-icon>
+                 Keep searching
+              </ion-button>
+           </div>
+        </ng-container>
+     </ion-slide>
+     <!--  <ion-slide>
+        <ng-container>
+         <img src="assets/img/trip2.jpg"/>
+        <h2>Roma, 25</h2>
+        <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+        <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+        <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+        <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+        </ng-container> 
+        </ion-slide>
+        
+        <ion-slide>
+         <ng-container> 
+         <img src="assets/img/trip3.jpg"/>
+        <h2>Roma, 25</h2>
+        <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+        <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+        <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+        <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+         </ng-container>
+        </ion-slide>
+                     
+        <ion-slide>
+         <ng-container>   
+         <img src="assets/img/trip4.jpg"/>
+         <h2>Roma, 25</h2>
+         <p><ion-icon name="pin" ></ion-icon> delhi, India.</p>
+         <p><ion-icon name="pin"></ion-icon> delhi, India.</p>
+        <ion-row class="buttonss">
+          <ion-button><ion-icon name="close-circle" ></ion-icon></ion-button>
+          <ion-button><ion-icon name="checkmark-circle" ></ion-icon></ion-button>
+        </ion-row>
+         </ng-container>
+        </ion-slide> -->
+  </ion-slides>
+</ion-content>

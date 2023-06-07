@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Koowee</string>
+    <string name="title_activity_main">Koowee</string>
+    <string name="package_name">com.koowee.app</string>
+    <string name="custom_url_scheme">com.koowee.app</string>
+
+     <!-- <string name="applink_host">dtct2.test-app.link</string>
+     <string name="applink_host_alternate">dtct2-alternate.test-app.link</string>
+     <string name="deeplink_scheme">Koowee</string>
+     <string name="branch_key">key_live_bmYBuaDm1ano4hr9O17URkhpCsikfIYO</string>
+     <string name="branch_test_key">key_test_ag4qujDc3nek2cE82kg2fkocCsigpG71</string>
+     <string name="branch_test_mode">false</string> -->
+     <!-- set above to "true" to use test key -->
+</resources>

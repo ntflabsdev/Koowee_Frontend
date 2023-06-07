@@ -1,0 +1,27 @@
+<ion-header class="heder-main ion-no-border">
+	<ion-toolbar lines="none" >
+	  <ion-back-button routerLink="/tabs/dashboard" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+	  <ion-title class="ion-text-center"></ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end"  (click)="backButton()" ><ion-icon name="home-outline"></ion-icon></ion-buttons>
+	</ion-toolbar>
+  </ion-header>
+
+<ion-content>
+	<div class="ig-box-pos">
+		<!-- <img src="assets/img/track2.jpg" class="btn-tack"> -->
+		  <div #map id="map"></div>
+		<div class="top-search">
+			<span class="icon-str"> <ion-icon name="search-outline"></ion-icon> </span>
+			<div class="demo"><ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete></div>
+			
+		</div>
+		<div class="text">
+			<h5 *ngIf="text" style="color: #fff;">Above. Select a Location where other travellers will be traveling to</h5>
+		</div>
+		<div class="bottom-btns">
+			<!-- <a href="javascript:void(0)" class="cancl"> Cancel </a> -->
+			<a href="javascript:void(0)" class="slects" (click)="selectlocation()">View all profile trips </a>
+		</div>
+	</div>
+</ion-content>

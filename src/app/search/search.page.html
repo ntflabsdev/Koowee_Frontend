@@ -1,0 +1,97 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+    <ion-back-button routerLink="/add-step-map" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+  <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+  <ion-buttons slot="end"  (click)="backButton()" ><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div filterBtns> -->
+    <!-- <span class="icon-drt" (click)="gotomap();"> <ion-icon name="globe-outline"></ion-icon> </span> -->
+    <!-- <ion-searchbar placeholder="Search" [(ngModel)]="search_by" class="places_search"> <ion-icon class="search-icon" name="search-outline" (click)="search();"></ion-icon></ion-searchbar> -->
+    <!-- <ion-input class="demo"> -->
+      <!-- <ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"> </ngxgeo-autocomplete></ion-input> -->
+    <!-- <ion-input  placeholder="Search" [(ngModel)]="search_by" class="places_search"></ion-input> -->
+
+     <!-- <ion-icon class="search-icon" name="search-outline" (click)="search();"></ion-icon> -->
+  <!-- </div> -->
+
+  <div searchPage>
+    <ion-row *ngIf="users.length > 0">
+      <ion-col  *ngFor="let user of users" size="4" (click)="gotourl('/profile/'+user.userinfo._id)" >
+        <div photoCol *ngIf="errors.indexOf(user.userinfo?.profile_picture) == -1">
+              <img src="{{user.userinfo?.profile_picture}}" alt="">
+              <a href="javascript:void(0)" gallery><ion-icon name="copy"></ion-icon></a>
+        </div>
+        <div photoCol *ngIf="errors.indexOf(user.userinfo?.profile_picture) >= 0">
+        <img src="../assets/img/img1.jpg" alt="">
+        <a href="javascript:void(0)" gallery><ion-icon name="copy"></ion-icon></a>
+        </div>
+      
+      <!--  <div photoCol bortop>
+              <img src="../assets/img/img2.jpg" alt="">
+              <a href="javascript:void(0)" gallery><ion-icon name="copy"></ion-icon></a>
+        </div> -->
+      </ion-col>
+      
+
+      <!-- <ion-col size="8" *ngIf="isImage(user.images[0])"> -->
+        <!-- <ion-col size="8" *ngIf="user.image.file_type == 'video'">
+        <div photoCol heightdouble>
+              <img src="../assets/img/img3.jpg" alt="">
+              <a href="javascript:void(0)" video><ion-icon name="play"></ion-icon></a>
+        </div>
+      </ion-col> -->
+    </ion-row>
+    <ion-row *ngIf="users.length == 0">
+      <ion-col size="12">
+        <div photoCol>
+              <p>No user find near you, try another location..</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img4.jpg" alt="">
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img5.jpg" alt="">
+              <a href="javascript:void(0)" gallery><ion-icon name="copy"></ion-icon></a>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img6.jpg" alt="">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img7.jpg" alt="">
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img1.jpg" alt="">
+              <a href="javascript:void(0)" video><ion-icon name="play"></ion-icon></a>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div photoCol>
+              <img src="../assets/img/img2.jpg" alt="">
+              <a href="javascript:void(0)" gallery><ion-icon name="copy"></ion-icon></a>
+        </div>
+      </ion-col>
+    </ion-row> -->
+  </div>  
+</ion-content>
+<ion-footer>
+  <!-- <ion-tab></ion-tab> -->
+  </ion-footer>
+

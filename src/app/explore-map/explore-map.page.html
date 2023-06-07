@@ -1,0 +1,29 @@
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button defaultHref="/tabs/profile" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center"></ion-title>
+	<!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="top-search">
+		<div class="src-trs">
+			<span class="icon-drt" routerLink="/search-trip"> <ion-icon name="list-outline"></ion-icon></span>
+			<div class="demo"><ngxgeo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ngxgeo-autocomplete></div>
+			<span class="icon-sc-f"> <ion-icon name="funnel-outline"></ion-icon> </span>
+		</div>
+	</div>
+	<div map>
+		<img src="../assets/img/map.jpg" alt="">
+	</div>
+	<div botmBar>
+		<span><a href="javascript:void(0)"><ion-icon name="information-circle"></ion-icon></a></span>
+		<span ritBtns>
+			<a href="javascript:void(0)"><ion-icon name="layers"></ion-icon></a>
+			<a href="javascript:void(0)"><ion-icon name="locate-outline"></ion-icon></a>
+			<a locate href="javascript:void(0)"><ion-icon name="pin-sharp"></ion-icon></a>
+		</span>
+	</div>
+</ion-content>

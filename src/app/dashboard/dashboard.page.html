@@ -1,0 +1,98 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Hello,</ion-title>
+    <ion-icon name='search'></ion-icon> 
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content >
+  <div class="title">
+    <!-- <img  *ngIf="errors.indexOf(profile_data.data?.profile_picture) >= 0"  src="../../assets/img/img1.jpg" class="img" /> -->
+    <img *ngIf="(errors.indexOf(profile_data.data?.profile_picture) >= 0 ) "   class="img" src="../assets/img/img1.jpg"
+      alt="">
+    <img *ngIf="(errors.indexOf(profile_data.data?.profile_picture) == -1 ) " class="img"
+      src="{{profile_data.data?.profile_picture}}" alt="">
+    <!-- <img *ngIf="is_license_uploaded == true"   alt="" [src]="sanitizer.bypassSecurityTrustUrl(license_image_url)"
+  > -->
+
+    <div class="innerbox1">
+    <span class="txt" *ngIf="profile_data?.data != undefined">Hello, {{profile_data.data?.firstname+' '}}</span>
+    <!-- <ion-icon name="chatbubbles-outline"  routerLink="/connections"   size="large"></ion-icon> -->
+    </div>
+  </div>
+
+  <div class="box1" routerLink="/discovery">
+    <!-- <img src="../../assets/img/Group 8.png" class="img1" /> -->
+    <div class="innerbox">
+      <p class="bgwhite">Search Settings</p>
+      <img src="../../assets/img/Vector 5.png" class="arrow" />
+    </div>
+    <!-- <img src="../../assets/img/Ellipse 4.png"/> -->
+  </div>
+
+  <div class="box2" routerLink="/tabs/profile">
+    <!-- <img src="../../assets/img/Group 21.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">My Profile</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+  </div>
+  <div class="box2" routerLink="/connections">
+    <!-- <img src="../../assets/img/Group 21.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">Matched Profiles</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+  </div>
+
+  <div class="box2" routerLink="/add-step-map">
+    <!-- <img src="../../assets/img/Group 21.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">All Profiles</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+ </div>
+
+  <div class="box2" routerLink="/future-connect">
+    <!-- <img src="../../assets/img/Group 12.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">Profiles That Match My Search</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+  </div>
+  <!-- <div class="box2"   routerLink="/places-of-interests">
+  <img src="../../assets/img/Group16.png" class="img2" />
+  <div class="innerbox" >    
+    <p class="bgwhite1">Places of interest</p>
+    <img src="../../assets/img/CaretRight.png" class="right" >
+  </div>
+</div> -->
+
+  <div class="box2" routerLink="/my-trips">
+    <!-- <img src="../../assets/img/Group 15.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">Plan A Trip</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+  </div>
+
+  <div class="box2"   routerLink="/add-step-map2">
+    <!-- <img src="../../assets/img/Group 22.png" class="img2" /> -->
+    <div class="innerbox">
+      <p class="bgwhite1">View Members Trips</p>
+      <img src="../../assets/img/CaretRight.png" class="right">
+    </div>
+  </div>
+
+  <div class="emer" routerLink="/emergency-button">
+    <!-- <img src="../../assets/img/bell.png" class="bell" /> -->
+    <div class="innerbox">
+      <p class="bgwhite">Emergency</p>
+      <img src="../../assets/img/Vector 5.png" class="lastarrow" />
+    </div>
+
+  </div>
+
+
+
+</ion-content>

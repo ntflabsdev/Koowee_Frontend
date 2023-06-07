@@ -1,0 +1,99 @@
+ion-content {
+	.top-headr {
+		background: var(--ion-color-gradient1);
+		position: relative;
+		padding: 56px 25px 50px;
+		display: block;
+		color: var(--ion-color-white);
+		text-align: center;
+		img.usr-imgt {
+			height: 43px;
+		}
+	}
+	.date-cont {
+		position: relative;
+		background: var(--ion-color-white);
+		padding: 20px 25px;
+		border-radius: 30px 30px 0 0;
+		margin-top: -30px;
+		[box-sec]
+		{
+			background: var(--ion-color-gradient1);
+			position:relative;
+			z-index:1;
+			overflow:hidden;
+			border-radius: 15px;
+			padding: 30px 15px 15px;
+            box-shadow: 0px 0px 20px 0px rgba(0 , 0 , 0 , 0.2);			
+		    h4
+			{
+				margin: 0px;
+				font-size: 14px;
+				color: var(--ion-color-white);
+                min-height: 60px;				
+			}
+			img
+			{
+				max-height: 50px;
+				margin-top: 0px;
+				display: block;
+				margin-left: auto;			
+			}
+			&:after
+			{
+			    position:absolute;
+				content:"";
+				top:0px;
+				bottom:0px;
+				left:0px;
+				right:0px;
+				z-index:-1;
+				
+			}			
+			&[profilesec]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-profile.png) bottom right/100px no-repeat;				
+				}			
+			}			
+			&[connect]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-connect.png) bottom right/100px no-repeat;				
+				}			
+			}			
+			&[future-connect]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-future-connect.png) bottom right/100px no-repeat;				
+				}			
+			}			
+			&[places]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-places.png) bottom right/100px no-repeat;				
+				}			
+			}			
+			&[trip]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-trip.png) bottom right/100px no-repeat;				
+				}			
+			}			
+			&[emergency]
+			{
+				&:after
+				{
+					background: url(../../assets/img/pattern.png) top left/90% no-repeat ,url(../../assets/img/bg-emergency.png) bottom right/100px no-repeat;				
+				}			
+			}
+		}
+	}
+	
+}
+

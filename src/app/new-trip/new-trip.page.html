@@ -1,0 +1,105 @@
+<!-- <ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+  	<ion-back-button routerLink="/tabs/home" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">New Trip </ion-title>
+	
+	<ion-buttons slot="end" routerLink="/tabs/home"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header class="heder-main ion-no-border">
+  <ion-toolbar lines="none" >
+    <ion-back-button routerLink="/places-interests" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title class="ion-text-center">New Trip</ion-title>
+  <!--ion-buttons slot="end"><ion-icon name="add-outline"></ion-icon></ion-buttons-->
+  <ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form class="kt-form form-login" [formGroup]="loginForm" autocomplete="off">
+	<div newTripPage>
+		<div search>
+			<label>Trip Name</label>
+			<ion-input formControlName="trip_name" ></ion-input>
+			<span errormsg *ngIf="isControlHasError('trip_name','required')">
+            <strong>Trip name is required</strong>
+            </span>
+		</div>
+		<ion-row>
+			<ion-col>
+				<label>Date</label>
+				<ion-datetime formControlName="start_date" displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+				<span errormsg *ngIf="isControlHasError('start_date','required')">
+				<strong>Start date is required</strong>
+				</span>
+			</ion-col>
+			<!-- <ion-col>
+				<label>Time</label>
+				<ion-datetime formControlName="Start_time" displayFormat="HH:mm" placeholder="Select Time" ></ion-datetime>
+				<span errormsg *ngIf="isControlHasError('Start_time','required')">
+				<strong>Start time is required</strong>
+				</span>
+			</ion-col> -->
+
+			
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<label>Starting Point</label>
+				<ion-input disabled formControlName="starting_point"></ion-input>
+				<span errormsg *ngIf="isControlHasError('starting_point','required')">
+				<strong>Starting point is required</strong>
+				</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<label>Trip Summary</label>
+				<ion-textarea formControlName="trip_summary" line="5"></ion-textarea>
+				<span errormsg *ngIf="isControlHasError('trip_summary','required')">
+				<strong>Trip summary is required</strong>
+				</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<!-- <div uploadfile> -->
+					<!-- <ion-icon name="cloud-upload"></ion-icon>
+					<p>Upload photos of places you have visited</p> -->
+				<ngx-dropzone (change)="onSelect($event)" [accept]="'image/*'" >
+
+				<ngx-dropzone-label><ion-icon name="cloud-upload-outline"></ion-icon> Upload photos of places you have visited</ngx-dropzone-label>
+				<ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+				<!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+				</ngx-dropzone-image-preview>
+
+				</ngx-dropzone>
+				<span errormsg *ngIf="img_err == true">
+				<strong>Please upload images</strong>
+				</span> 
+				<!-- </div> -->
+			</ion-col>
+		</ion-row>
+			<!-- <ion-row>
+				<ion-col>
+				<ion-button (click)="loadmore();" btn-global>Load More</ion-button>
+				</ion-col>
+			</ion-row> -->
+		<ion-row>
+		  <ion-col>
+		  <ion-button (click)="submit();"  btn-global>Add New Step</ion-button>
+		  </ion-col>
+
+		   <ion-col>
+		  <ion-button (click)="submits('0');"  btn-global>Save Draft</ion-button>
+		   </ion-col>
+
+		<ion-col>
+		<ion-button (click)="submits('1');" btn-global>Publish</ion-button>
+		</ion-col>
+
+</ion-row>
+	</div>
+</form>
+</ion-content>

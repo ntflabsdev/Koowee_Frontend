@@ -1,0 +1,253 @@
+<ion-header
+  class="ion-no-border heder-main trip-details-hdr"
+  align-title="center"
+>
+  <ion-toolbar lines="none">
+    <ion-back-button defaultHref="/places-of-interests" slot="start"
+      ><ion-icon name="arrow-back-outline"></ion-icon
+    ></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      
+        <a href="javascript:void(0)" class="menu-tgl">
+          <img src="assets/images/menu-wt.png" /></a>
+    </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center">Trip Details</ion-title>
+    <ion-buttons slot="end"
+      ><ion-icon name="home-outline"></ion-icon
+    ></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content bg-grey>
+  <div class="top-sctin">
+    <!---div class="hedr-src">
+      <ion-buttons slot="start"
+        ><ion-icon
+          routerLink="{{back_button_btn}}"
+          name="arrow-back-outline"
+        ></ion-icon
+      ></ion-buttons>
+      <label class="ttl-al"> Trip Details </label>
+      <ion-buttons slot="end" routerLink="/tabs/home"
+        ><ion-icon name="home-outline"></ion-icon
+      ></ion-buttons>
+    </div--->
+    <ion-segment [(ngModel)]="profiletab" class="segmt-desig">
+      <ion-segment-button value="Basic"> Trip Info </ion-segment-button>
+      <ion-segment-button value="Pet" (click)="displayGoogleMap();">
+        Track Places
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="flds-login" id="printable-area2">
+    <div [ngSwitch]="profiletab">
+      <ion-list *ngSwitchCase="'Basic'">
+        <div
+          class="contet-sect"
+          *ngIf="(main_trip.length != 0)"
+          id="printable-area"
+        >
+          <div class="phot-slides">
+            <div class="slids-box new-box-a dttr">
+              <ion-slides pager="true">
+                <ion-slide *ngFor="let img of images">
+                  <div class="slide">
+                    <div class="slidr-ims-st">
+                      <img
+                        src="{{img}}"
+                        class="img-str"
+                      />
+                    </div>
+                  </div>
+                </ion-slide>
+
+                <!-- <ion-slide>
+								  <div class="slide">
+									<div class="slidr-ims-st">	
+										<img src="assets/img/trip2.jpg" class="img-str"/>
+									</div>
+								  </div>
+								</ion-slide>
+
+								<ion-slide>
+								 <div class="slide">
+									<div class="slidr-ims-st">	
+										<img src="assets/img/trip3.jpg" class="img-str"/>
+									</div>
+								  </div>
+								</ion-slide>
+								<ion-slide>
+								 <div class="slide">
+									<div class="slidr-ims-st">	
+										<img src="assets/img/trip4.jpg" class="img-str"/>
+									</div>
+								  </div>
+								</ion-slide> -->
+              </ion-slides>
+              <div class="conts-slder">
+                <!-- <h4>{{main_trip.trip_name}}</h4> -->
+              </div>
+              <!-- <a
+                href="javascript:void(0)"
+                class="btn-cat"
+                (click)="shareit4(main_trip.trip_name);"
+              >
+                <ion-icon name="share-social-outline"></ion-icon>
+              </a> -->
+            </div>
+            <ul class="data-cont">
+              <li>
+                <span> Trip Name </span>
+                <span class="details-trip"> {{main_trip.trip_name}} </span>
+              </li>
+              <li>
+                <span> Date and time </span>
+                <span class="details-trip">
+                  {{main_trip.start_date | date: 'dd/MM/yyyy'}} at
+                  {{main_trip.Start_time | date: 'H:mm a'}}</span
+                >
+              </li>
+              <li>
+                <span> Starting Point </span>
+                <span class="details-trip"> {{main_trip.starting_point}} </span>
+              </li>
+              <li class="descri">
+                <b> Description: </b> {{main_trip.trip_summary}}
+              </li>
+
+              <li>
+                <div
+                  ad-place-btn
+                  *ngIf="main_trip.status == 0"
+                  (click)="submits(main_trip._id);"
+                >
+                  <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                      <a href="javascript:void(0)" save>Publish</a>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'Pet'">
+        <div class="flds-login">
+          <div class="img-het-map">
+            <!-- <img src="assets/img/track.jpg" class="img-st"> -->
+
+            <div #map id="map"></div>
+
+            <div class="cont-usre">
+              <img
+                *ngIf="errors.indexOf(profile_data.data?.profile_picture) >= 0"
+                src="../assets/img/img1.jpg"
+                alt=""
+              />
+              <img
+                *ngIf="errors.indexOf(profile_data.data?.profile_picture) == -1"
+                src="{{profile_data.data?.profile_picture}}"
+                alt=""
+              />
+              <h5 *ngIf="errors.indexOf(profile_data.data?.firstname) == -1">
+                {{profile_data.data?.firstname+' '+profile_data.data?.lastname}}
+              </h5>
+              <h3>{{main_trip.trip_name}}</h3>
+            </div>
+
+            <div class="bottom-cont-all">
+              <ul class="btn-slly">
+                <li>
+                  <a href="javascript:void(0)" class="home-ison">
+                    <span class="icon-s">
+                      <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    {{main_trip.start_date | date: 'd MMM'}} <br />
+                    {{main_trip.start_date | date: 'yyyy'}}
+                  </a>
+                </li>
+                <li *ngIf="add_button_show == 1">
+                  <a
+                    href="javascript:void(0)"
+                    class="home-ison"
+                    (click)="add_trips_main(main_trip._id,0);"
+                  >
+                    <span class="plusd-s">
+                      <ion-icon name="add-circle-sharp"></ion-icon>
+                    </span>
+                  </a>
+                </li>
+                <ng-container *ngFor="let trip of trips; let i = index;">
+                  <li
+                    (click)="add_trips_main_edit(trip.trip_id,i,'/step-details/'+trip._id)"
+                  >
+                    <div class="box-imgsd">
+                      <div class="top-kk">
+                        <img
+                          src="{{trip.images[0]}}"
+                          class="img-bosf0"
+                        />
+                        <div class="cont-dates">
+                          {{trip.trip_name}}
+                          <span class="flag-txt">{{trip.starting_point}}</span>
+                        </div>
+                      </div>
+                      <ul class="list-ll">
+                        <!-- <li> <span> <ion-icon name="heart-outline"></ion-icon> </span> 12 </li> -->
+                        <li>
+                          <span>
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                          </span>
+                          {{trip.count}}
+                        </li>
+                        <li>
+                          <span>
+                            <ion-icon name="image-outline"></ion-icon>
+                          </span>
+                          {{trip.images.length}}
+                        </li>
+                        <!-- 	<li> <span> <ion-icon name="home-outline"></ion-icon> </span> 2 </li> -->
+                      </ul>
+                    </div>
+                  </li>
+                  <li *ngIf="add_button_show == 1">
+                    <a
+                      href="javascript:void(0)"
+                      class="home-ison"
+                      (click)="add_trips(trip.trip_id,i);"
+                    >
+                      <span class="plusd-s">
+                        <ion-icon name="add-circle-sharp"></ion-icon>
+                      </span>
+                    </a>
+                  </li>
+                </ng-container>
+                <li *ngIf="trips.length > 0">
+                  <a href="javascript:void(0)" class="home-ison">
+                    <span class="icon-s">
+                      <ion-icon name="flag-outline"></ion-icon>
+                    </span>
+                    {{trips[trips.length -1].start_date | date: 'd MMM'}} <br />
+                    {{trips[trips.length -1].start_date | date: 'yyyy'}}
+                  </a>
+                </li>
+              </ul>
+              <span class="btn-icond">
+                <ion-icon name="man-outline"></ion-icon> Day 1</span
+              >
+            </div>
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+  
+</ion-content>
+<!--ion-footer class="foot-book">
+	<ion-button color="pink" class="btn-login" expand="full" routerLink="/book-slot">Book Now</ion-button>
+</ion-footer-->

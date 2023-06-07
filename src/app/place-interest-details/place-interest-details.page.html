@@ -1,0 +1,295 @@
+<ion-header class="ion-no-border heder-main" align-title="center">
+  <ion-toolbar lines="none">
+	<ion-back-button routerLink="/places-of-interests" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+	<ion-buttons slot="start">
+		<ion-menu-button> <a href="javascript:void(0)" class="menu-tgl"> <img src="assets/images/menu-wt.png"></a></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center">Place of Interest </ion-title>
+	<ion-buttons slot="end" routerLink="/tabs/dashboard"><ion-icon name="home-outline"></ion-icon></ion-buttons>
+		
+  </ion-toolbar>
+</ion-header>
+
+<ion-content bg-grey>
+	<div class="contet-sect">
+		<div class="phot-slides">
+			<div class="slids-box new-box-a">
+
+				<ion-slides pager="true" *ngIf="photos_data.length > 0">
+					<ion-slide  *ngFor="let photos of photos_data; let i = index;">
+					  <div class="slide">
+						<div class="slidr-ims-st">	
+							<img src="{{photos}}" class="img-str"/>
+						</div>
+					  </div>
+					</ion-slide>
+				</ion-slides>
+
+				<ion-slides pager="true" *ngIf="photos_data.length == 0 && places_data.image != '' && places_data.image != undefined">
+					<ion-slide  >
+					  <div class="slide">
+						<div class="slidr-ims-st">	
+							<img src="{{places_data.image}}" class="img-str"/>
+						</div>
+					  </div>
+					</ion-slide>
+				</ion-slides>
+
+				<ion-slides pager="true" *ngIf="photos_data.length == 0 && (places_data.image == null || places_data.image == '' || places_data.image == undefined)">
+					<ion-slide  >
+					  <div class="slide">
+						<div class="slidr-ims-st">	
+							<img src="assets/img/image-not-found.png" class="img-str"/>
+						</div>
+					  </div>
+					</ion-slide>
+				</ion-slides>
+
+				<div class="conts-slder">
+					<h4>  {{places_data.place.name}}  </h4>
+			<ngx-stars   *ngIf="(places_data.place.rating != '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="places_data.place.rating" [readonly]="true"  [size]="0.5"></ngx-stars>
+			<ngx-stars   *ngIf="(places_data.place.rating == '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="0" [readonly]="true"  [size]="0.5"></ngx-stars>
+			<!-- <ul class="rating-all">
+						<li class="active"> <ion-icon name="star"></ion-icon> </li>
+						<li class="active"> <ion-icon name="star"></ion-icon> </li>
+						<li class="active"> <ion-icon name="star"></ion-icon> </li>
+						<li class="active"> <ion-icon name="star"></ion-icon> </li>
+						<li> <ion-icon name="star"></ion-icon> </li>
+						<li class="totl-rv"> (12 Reviews) </li>
+					</ul> -->
+					<ng-conatiner *ngIf="places_data.results_l.reviews != undefined && places_data.results_l.reviews.length > 0">
+					({{places_data.results_l.reviews.length}} Reviews)
+				</ng-conatiner>
+				<ng-conatiner *ngIf="places_data.results_l.reviews == undefined">
+					(0 Reviews)
+				</ng-conatiner>
+				</div>
+				<span class="favor-icn" *ngIf="fav_type == 'not'" (click)="selectplace(places_data,i)"> <ion-icon name="heart-outline"></ion-icon> </span>
+				<span class="favor-icn selected" *ngIf="fav_type == 'already'"  (click)="removeplace(places_data._id,i)"> <ion-icon name="heart-outline"></ion-icon> </span>
+				<a href="javascript:void(0)" class="btn-cat"> <ion-icon name="share-social-outline"></ion-icon> </a>
+			</div>
+			<ion-segment [(ngModel)]="profiletab" class="segmt-details">
+				<ion-segment-button value="Basic" (click)="loadmap(places_data.results_l.geometry.location.lat,places_data.results_l.geometry.location.lng);">
+				   About
+				</ion-segment-button>
+				<ion-segment-button value="reviews">
+				   Reviews
+				</ion-segment-button>
+			</ion-segment>
+			<div class="content-all-pst">
+				<div [ngSwitch]="profiletab">
+					<ion-list *ngSwitchCase="'Basic'">
+						<!-- <h4 class="ttl-main"> About Us 
+							
+						</h4>
+						<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+					 -->
+						<!--h4 class="ttl-main"> Opening Hours </h4>
+						<ul class="open-hrs">
+							<li> <span> Monday - Friday </span> <span class="right-ts"> 8:30AM - 9:00PM </span> </li>
+							<li><span> Saturday - Sunday </span> <span class="right-ts"> 9:00AM - 6:00PM </span> </li>
+						</ul-->
+						<!--h4 class="ttl-main"> Address </h4-->
+						<div class="cont-slydt">
+							<div class="add-cit">	
+								<h5> Location </h5>
+								<p class="longt"> <b> Lat </b>{{places_data.results_l.geometry.location.lat}}° <br> <b> Lng </b>{{places_data.results_l.geometry.location.lng}}°  </p>
+								<p class="loct">  {{places_data.place.address}}</p>
+								<a href="javascript:void(0);" (click)="gotomap(places_data.results_l.url);" class="bt-syys"> Get Direction </a>
+							</div>
+							<div class="gg-map">
+								<div #map id="map"  style="height: 100%;"></div>
+								<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6509167.682012511!2d-123.79975055493215!3d37.1929955926075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sCalifornia%2C%20USA!5e0!3m2!1sen!2sin!4v1591875480005!5m2!1sen!2sin" width="100%" height="180" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
+
+								<!-- <iframe src="{{getmapurl(places_data.latlong.lat,places_data.latlong.lng)}}" width="100%" height="180" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
+
+							</div>
+												
+						</div>
+						<h4 class="ttl-main"> Fearures & Facilities </h4>
+						<ul class="features-fsc"  *ngIf="places_data.results_l.types.length > 0">
+							<li *ngFor="let type of places_data.results_l.types"> <span> {{((type).replace('_', ' ')).replace('_', ' ')}} </span> </li>
+							<!-- <li> <span> Booking Required </span> </li>
+							<li> <span> Dogs Allowed </span> </li>
+							<li> <span> Toilets</span> </li>
+							<li> <span> Showers </span> </li>
+							<li> <span> Close to Road </span> </li>
+							<li> <span> Wildlife </span> </li>
+							<li> <span> Laundry </span> </li> -->
+						</ul>
+						<h4  *ngIf="weathers.length > 0" class="ttl-main mt-20"> Weather Forecast 
+						</h4>
+						<div class="slidrs appoints" *ngIf="weathers.length > 0">	
+							<ion-slides [options]="slideOpts3" pager="true">
+								<ion-slide *ngFor="let weather of weathers;">
+									<div class="slide">
+										<div class="vcotr">
+											<h5> {{getdate(weather.date)}} </h5>
+											<img src="{{weather.day.condition.icon}}">
+											<p class="tsmr"> <span> {{weather.day.maxtemp_c}}° </span> {{round(weather.day.mintemp_c)}}° </p>
+											<p> {{weather.day.condition.text}} </p>
+										</div>
+									</div>
+								</ion-slide>
+								<!-- <ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Tue </h5>
+											<img src="assets/img/wea2.png">
+											<p class="tsmr"> <span> 42° </span> 30° </p>
+											<p> Clear </p>
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Wed </h5>
+											<img src="assets/img/wea1.png">
+											<p class="tsmr"> <span> 33° </span> 21° </p>
+											<p> Clouds </p>
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Thu </h5>
+											<img src="assets/img/wea2.png">
+											<p class="tsmr"> <span> 38° </span> 25° </p>
+											<p> Clear </p>
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Fri </h5>
+											<img src="assets/img/wea1.png">
+											<p class="tsmr"> <span> 38° </span> 25° </p>
+											<p> Clouds </p>
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Sat </h5>
+											<img src="assets/img/wea2.png">
+											<p class="tsmr"> <span> 38° </span> 25° </p>
+											<p> Clear </p>
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="vcotr">
+											<h5> Sun </h5>
+											<img src="assets/img/wea1.png">
+											<p class="tsmr"> <span> 38° </span> 25° </p>
+											<p> Clouds </p>
+										</div>
+									</div>
+								</ion-slide> -->
+							</ion-slides>
+						</div>
+						<!--div class="slidrs appoints">	
+							<ion-slides [options]="slideOpts3" pager="true">
+								<ion-slide>
+									<div class="slide">
+										<div class="img-b-sta">
+											<img src="assets/img/trip1.jpg">
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="img-b-sta">
+											<img src="assets/img/trip2.jpg">
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="img-b-sta">
+											<img src="assets/img/trip3.jpg">
+										</div>
+									</div>
+								</ion-slide>
+								<ion-slide>
+									<div class="slide">
+										<div class="img-b-sta">
+											<img src="assets/img/trip4.jpg">
+										</div>
+									</div>
+								</ion-slide>
+							</ion-slides>
+						</div-->
+					</ion-list>
+				  
+					<ion-list *ngSwitchCase="'reviews'">
+						
+						<!-- <div class="add-rev">
+							<h4 class="ttl-main mt-20"> 
+								Write Your Review
+								<ul class="add-rat-all">
+									<li class="active"> <ion-icon name="star"></ion-icon> </li>
+									<li class="active"> <ion-icon name="star"></ion-icon> </li>
+									<li class="active"> <ion-icon name="star"></ion-icon> </li>
+									<li class="active"> <ion-icon name="star"></ion-icon> </li>
+									<li> <ion-icon name="star"></ion-icon> </li>
+								</ul>
+							</h4>
+							<div class="add-commnt">
+								<ion-input placeholder="Add review here..."></ion-input>
+								<a href="javascript:void(0);" class="btn-send"> <ion-icon name="send-outline"></ion-icon> </a>
+							</div>
+						</div> -->
+						<ng-container *ngIf="places_data.results_l.reviews == undefined">
+							<h4 class="ttl-main mt-20"> Reviews (0)</h4>
+						</ng-container>
+						<ng-container *ngIf="places_data.results_l.reviews != undefined && places_data.results_l.reviews.length > 0">
+						<h4 class="ttl-main mt-20"> Reviews ({{places_data.results_l.reviews.length}})</h4>
+						<div class="commnts" *ngFor="let revew of places_data.results_l.reviews">
+							<img *ngIf="revew.profile_photo_url != ''" src="{{revew.profile_photo_url}}" class="adm-usr"> 
+							<img *ngIf="revew .profile_photo_url == ''" src="assets/img/img2.jpg"  class="adm-usr">
+						<ngx-stars   *ngIf="(revew.rating != '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="revew.rating" [readonly]="true"  [size]="0.5"></ngx-stars>
+						<ngx-stars   *ngIf="(revew.rating == '')" class="ng-start2" [color]="'#f8c50a'" [initialStars]="0" [readonly]="true"  [size]="0.5"></ngx-stars>
+							<h5> {{revew.author_name}} <span class="time-al"> {{revew.relative_time_description}} </span> </h5>
+							<p> {{revew.text}} </p>
+						</div>
+					</ng-container>
+				<!-- 		<div class="commnts" >
+							<img src="assets/img/img2.jpg" class="adm-usr"> 
+							<ul class="add-rat-all all-rtsa">
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li> <ion-icon name="star"></ion-icon> </li>
+								<li> <ion-icon name="star"></ion-icon> </li>
+							</ul>
+							<h5> <span class="time-al"> 1 hour ago </span> </h5>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+						</div>
+						<div class="commnts">
+							<img src="assets/img/img3.jpg" class="adm-usr"> 
+							<ul class="add-rat-all all-rtsa">
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+								<li class="active"> <ion-icon name="star"></ion-icon> </li>
+							</ul>
+							<h5>  Marry James  <span class="time-al"> 3 hours ago </span> </h5>
+							<p> At vero eos et accusamus et iusto odio dignissimos . </p>
+						</div> -->
+						
+					</ion-list>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>
+<!--ion-footer class="foot-book">
+	<ion-button color="pink" class="btn-login" expand="full" routerLink="/book-slot">Book Now</ion-button>
+</ion-footer-->

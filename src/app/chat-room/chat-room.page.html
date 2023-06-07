@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border heder-main " align-title="center">
+   <ion-toolbar lines="none" >
+    <ion-back-button routerLink="/connected-user-profile/{{user_data._id}}" slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    <ion-title  class="center" *ngIf="errors.indexOf(user_data?.firstname) == -1">
+      {{user_data.firstname +" "+user_data.lastname}}
+    </ion-title>
+    </ion-toolbar>
+</ion-header>
+ 
+<ion-content #content  [scrollEvents]="true"
+  (ionScrollStart)="logScrollStart()"
+  (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()">
+ <ion-infinite-scroll *ngIf="messages_list.length < totaldata" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+    <div  *ngFor="let message of messages_list">
+      <div leftSide *ngIf="message.sender_id == user_chat_id" class="message other_message" >
+       <!--  <span class="user_name">kkk</span><br> -->
+        <div innerLeft>
+            <span>{{message.message}}</span>
+            <div class="time">{{message.created_on | timeAgo }}</div>
+          </div>
+          
+      </div>
+ 
+      <div rightSide *ngIf="message.sender_id == id" class="message my_message">
+       <!--  <span class="user_name">kkkk</span><br> -->
+        <div innerRight>
+          <span>{{message.message}}</span>
+          <div class="time">{{message.created_on | timeAgo }}</div>
+        </div>
+      </div>
+    </div>
+
+ 
+</ion-content>
+ 
+<ion-footer>
+  <div class="message_row">
+    <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
+    <button ion-button clear color="primary" (click)="send_message()" [disabled]="message === ''">
+      <ion-icon name="paper-plane-outline"></ion-icon>
+    </button>
+  </div>
+</ion-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
